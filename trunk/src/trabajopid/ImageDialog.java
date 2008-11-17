@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 /**
  *
  * @author  juanmasp
+ * @date 17/11/2008
  */
 public class ImageDialog extends javax.swing.JDialog {
     
