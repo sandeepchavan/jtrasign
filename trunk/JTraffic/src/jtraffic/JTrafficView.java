@@ -104,8 +104,16 @@ public class JTrafficView extends FrameView {
     private void initComponents() {
 
         mainPanel = new javax.swing.JPanel();
+        spMuestraPaso = new javax.swing.JScrollPane();
+        tbBarraHerr = new javax.swing.JToolBar();
+        lbTitImagenOriginal = new javax.swing.JLabel();
+        lbImagenOriginal = new javax.swing.JLabel();
+        lbTitDescripcionPaso = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        taDescripcionPaso = new javax.swing.JTextArea();
         menuBar = new javax.swing.JMenuBar();
         javax.swing.JMenu fileMenu = new javax.swing.JMenu();
+        miAbrir = new javax.swing.JMenuItem();
         javax.swing.JMenuItem exitMenuItem = new javax.swing.JMenuItem();
         javax.swing.JMenu helpMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem aboutMenuItem = new javax.swing.JMenuItem();
@@ -117,22 +125,74 @@ public class JTrafficView extends FrameView {
 
         mainPanel.setName("mainPanel"); // NOI18N
 
+        spMuestraPaso.setName("spMuestraPaso"); // NOI18N
+
+        tbBarraHerr.setRollover(true);
+        tbBarraHerr.setName("tbBarraHerr"); // NOI18N
+
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(jtraffic.JTrafficApp.class).getContext().getResourceMap(JTrafficView.class);
+        lbTitImagenOriginal.setText(resourceMap.getString("lbTitImagenOriginal.text")); // NOI18N
+        lbTitImagenOriginal.setName("lbTitImagenOriginal"); // NOI18N
+
+        lbImagenOriginal.setText(resourceMap.getString("lbImagenOriginal.text")); // NOI18N
+        lbImagenOriginal.setName("lbImagenOriginal"); // NOI18N
+
+        lbTitDescripcionPaso.setText(resourceMap.getString("lbTitDescripcionPaso.text")); // NOI18N
+        lbTitDescripcionPaso.setName("lbTitDescripcionPaso"); // NOI18N
+
+        jScrollPane2.setName("jScrollPane2"); // NOI18N
+
+        taDescripcionPaso.setColumns(20);
+        taDescripcionPaso.setRows(5);
+        taDescripcionPaso.setName("taDescripcionPaso"); // NOI18N
+        jScrollPane2.setViewportView(taDescripcionPaso);
+
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(tbBarraHerr, javax.swing.GroupLayout.DEFAULT_SIZE, 810, Short.MAX_VALUE)
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addComponent(lbTitImagenOriginal)
+                        .addGap(174, 174, 174))
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addComponent(lbTitDescripcionPaso)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addComponent(lbImagenOriginal, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE))
+                .addGap(7, 7, 7)
+                .addComponent(spMuestraPaso, javax.swing.GroupLayout.PREFERRED_SIZE, 529, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 252, Short.MAX_VALUE)
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addComponent(tbBarraHerr, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addComponent(lbTitImagenOriginal)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbImagenOriginal, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbTitDescripcionPaso)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE))
+                    .addComponent(spMuestraPaso, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         menuBar.setName("menuBar"); // NOI18N
 
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(jtraffic.JTrafficApp.class).getContext().getResourceMap(JTrafficView.class);
         fileMenu.setText(resourceMap.getString("fileMenu.text")); // NOI18N
         fileMenu.setName("fileMenu"); // NOI18N
+
+        miAbrir.setText(resourceMap.getString("miAbrir.text")); // NOI18N
+        miAbrir.setName("miAbrir"); // NOI18N
+        fileMenu.add(miAbrir);
 
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(jtraffic.JTrafficApp.class).getContext().getActionMap(JTrafficView.class, this);
         exitMenuItem.setAction(actionMap.get("quit")); // NOI18N
@@ -165,11 +225,11 @@ public class JTrafficView extends FrameView {
         statusPanel.setLayout(statusPanelLayout);
         statusPanelLayout.setHorizontalGroup(
             statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(statusPanelSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(statusPanelSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 810, Short.MAX_VALUE)
             .addGroup(statusPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(statusMessageLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 226, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 640, Short.MAX_VALUE)
                 .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(statusAnimationLabel)
@@ -193,12 +253,20 @@ public class JTrafficView extends FrameView {
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lbImagenOriginal;
+    private javax.swing.JLabel lbTitDescripcionPaso;
+    private javax.swing.JLabel lbTitImagenOriginal;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenuItem miAbrir;
     private javax.swing.JProgressBar progressBar;
+    private javax.swing.JScrollPane spMuestraPaso;
     private javax.swing.JLabel statusAnimationLabel;
     private javax.swing.JLabel statusMessageLabel;
     private javax.swing.JPanel statusPanel;
+    private javax.swing.JTextArea taDescripcionPaso;
+    private javax.swing.JToolBar tbBarraHerr;
     // End of variables declaration//GEN-END:variables
 
     private final Timer messageTimer;
