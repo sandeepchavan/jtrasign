@@ -22,6 +22,7 @@ import javax.swing.JFrame;
 public class JTrafficView extends FrameView {
 
     private int estado;
+    private int paso;
 
     public JTrafficView(SingleFrameApplication app) {
         super(app);
