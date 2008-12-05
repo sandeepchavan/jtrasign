@@ -22,9 +22,6 @@ import javax.swing.JFrame;
  */
 public class JTrafficView extends FrameView {
 
-    private int estado;
-    private int paso;
-
     public JTrafficView(SingleFrameApplication app) {
         super(app);
 
@@ -262,7 +259,7 @@ public class JTrafficView extends FrameView {
         JFileChooser abrirFichero = new JFileChooser();
         abrirFichero.showOpenDialog(this.getComponent());
 
-        lbImagenOriginal.setText(abrirFichero.getSelectedFile().getAbsolutePath());
+        //lbImagenOriginal.setText(abrirFichero.getSelectedFile().getAbsolutePath());
     }//GEN-LAST:event_miAbrirActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
