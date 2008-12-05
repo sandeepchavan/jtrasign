@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
 import javax.swing.Timer;
 import javax.swing.Icon;
 import javax.swing.JDialog;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 
 /**
@@ -151,7 +152,7 @@ public class JTrafficView extends FrameView {
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tbBarraHerr, javax.swing.GroupLayout.DEFAULT_SIZE, 810, Short.MAX_VALUE)
+            .addComponent(tbBarraHerr, javax.swing.GroupLayout.PREFERRED_SIZE, 810, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,6 +193,11 @@ public class JTrafficView extends FrameView {
 
         miAbrir.setText(resourceMap.getString("miAbrir.text")); // NOI18N
         miAbrir.setName("miAbrir"); // NOI18N
+        miAbrir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miAbrirActionPerformed(evt);
+            }
+        });
         fileMenu.add(miAbrir);
 
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(jtraffic.JTrafficApp.class).getContext().getActionMap(JTrafficView.class, this);
@@ -251,6 +257,13 @@ public class JTrafficView extends FrameView {
         setMenuBar(menuBar);
         setStatusBar(statusPanel);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void miAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miAbrirActionPerformed
+        JFileChooser abrirFichero = new JFileChooser();
+        abrirFichero.showOpenDialog(this.getComponent());
+
+        lbImagenOriginal.setText(abrirFichero.getSelectedFile().getAbsolutePath());
+    }//GEN-LAST:event_miAbrirActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane2;
