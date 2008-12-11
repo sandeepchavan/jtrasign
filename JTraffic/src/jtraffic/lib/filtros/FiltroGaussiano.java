@@ -1,15 +1,12 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package jtraffic.lib.filtros;
 
 import java.awt.image.BufferedImage;
 
 /**
  *
- * @author juanmasp
+ * @author JuanmaSP
+ * @author DavidSAC
+ * @date 2008-12-11
  */
 public class FiltroGaussiano {
     /**

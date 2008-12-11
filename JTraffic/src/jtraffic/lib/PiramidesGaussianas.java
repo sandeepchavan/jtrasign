@@ -1,12 +1,5 @@
 package jtraffic.lib;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
-
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.util.LinkedList;
@@ -15,7 +8,9 @@ import jtraffic.lib.filtros.FiltroGaussiano;
 
 /**
  *
- * @author juanmasp
+ * @author JuanmaSP
+ * @author DavidSAC
+ * @date 2008-12-11
  */
 public class PiramidesGaussianas {
     /**
