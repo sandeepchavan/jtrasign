@@ -4,6 +4,10 @@
 
 package jtraffic;
 
+import java.awt.Image;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.jdesktop.application.Action;
 import org.jdesktop.application.ResourceMap;
 import org.jdesktop.application.SingleFrameApplication;
@@ -11,8 +15,12 @@ import org.jdesktop.application.FrameView;
 import org.jdesktop.application.TaskMonitor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import javax.imageio.ImageIO;
 import javax.swing.Timer;
 import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -102,13 +110,17 @@ public class JTrafficView extends FrameView {
     private void initComponents() {
 
         mainPanel = new javax.swing.JPanel();
-        spMuestraPaso = new javax.swing.JScrollPane();
         tbBarraHerr = new javax.swing.JToolBar();
-        lbTitImagenOriginal = new javax.swing.JLabel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
         lbImagenOriginal = new javax.swing.JLabel();
-        lbTitDescripcionPaso = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        taDescripcionPaso = new javax.swing.JTextArea();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        jScrollPane8 = new javax.swing.JScrollPane();
         menuBar = new javax.swing.JMenuBar();
         javax.swing.JMenu fileMenu = new javax.swing.JMenu();
         miAbrir = new javax.swing.JMenuItem();
@@ -123,64 +135,54 @@ public class JTrafficView extends FrameView {
 
         mainPanel.setName("mainPanel"); // NOI18N
 
-        spMuestraPaso.setName("spMuestraPaso"); // NOI18N
-
         tbBarraHerr.setRollover(true);
         tbBarraHerr.setName("tbBarraHerr"); // NOI18N
 
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(jtraffic.JTrafficApp.class).getContext().getResourceMap(JTrafficView.class);
-        lbTitImagenOriginal.setText(resourceMap.getString("lbTitImagenOriginal.text")); // NOI18N
-        lbTitImagenOriginal.setName("lbTitImagenOriginal"); // NOI18N
+        jTabbedPane1.setName("jTabbedPane1"); // NOI18N
 
+        jScrollPane1.setName("jScrollPane1"); // NOI18N
+
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(jtraffic.JTrafficApp.class).getContext().getResourceMap(JTrafficView.class);
         lbImagenOriginal.setText(resourceMap.getString("lbImagenOriginal.text")); // NOI18N
         lbImagenOriginal.setName("lbImagenOriginal"); // NOI18N
+        jScrollPane1.setViewportView(lbImagenOriginal);
 
-        lbTitDescripcionPaso.setText(resourceMap.getString("lbTitDescripcionPaso.text")); // NOI18N
-        lbTitDescripcionPaso.setName("lbTitDescripcionPaso"); // NOI18N
+        jTabbedPane1.addTab(resourceMap.getString("jScrollPane1.TabConstraints.tabTitle"), jScrollPane1); // NOI18N
 
         jScrollPane2.setName("jScrollPane2"); // NOI18N
+        jTabbedPane1.addTab(resourceMap.getString("jScrollPane2.TabConstraints.tabTitle"), jScrollPane2); // NOI18N
 
-        taDescripcionPaso.setColumns(20);
-        taDescripcionPaso.setRows(5);
-        taDescripcionPaso.setName("taDescripcionPaso"); // NOI18N
-        jScrollPane2.setViewportView(taDescripcionPaso);
+        jScrollPane3.setName("jScrollPane3"); // NOI18N
+        jTabbedPane1.addTab(resourceMap.getString("jScrollPane3.TabConstraints.tabTitle"), jScrollPane3); // NOI18N
+
+        jScrollPane4.setName("jScrollPane4"); // NOI18N
+        jTabbedPane1.addTab(resourceMap.getString("jScrollPane4.TabConstraints.tabTitle"), jScrollPane4); // NOI18N
+
+        jScrollPane5.setName("jScrollPane5"); // NOI18N
+        jTabbedPane1.addTab(resourceMap.getString("jScrollPane5.TabConstraints.tabTitle"), jScrollPane5); // NOI18N
+
+        jScrollPane6.setName("jScrollPane6"); // NOI18N
+        jTabbedPane1.addTab(resourceMap.getString("jScrollPane6.TabConstraints.tabTitle"), jScrollPane6); // NOI18N
+
+        jScrollPane7.setName("jScrollPane7"); // NOI18N
+        jTabbedPane1.addTab(resourceMap.getString("jScrollPane7.TabConstraints.tabTitle"), jScrollPane7); // NOI18N
+
+        jScrollPane8.setName("jScrollPane8"); // NOI18N
+        jTabbedPane1.addTab(resourceMap.getString("jScrollPane8.TabConstraints.tabTitle"), jScrollPane8); // NOI18N
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tbBarraHerr, javax.swing.GroupLayout.PREFERRED_SIZE, 810, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(mainPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
-                    .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addComponent(lbTitImagenOriginal)
-                        .addGap(174, 174, 174))
-                    .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addComponent(lbTitDescripcionPaso)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                    .addComponent(lbImagenOriginal, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE))
-                .addGap(7, 7, 7)
-                .addComponent(spMuestraPaso, javax.swing.GroupLayout.PREFERRED_SIZE, 529, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(tbBarraHerr, javax.swing.GroupLayout.DEFAULT_SIZE, 810, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 810, Short.MAX_VALUE)
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addComponent(tbBarraHerr, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addComponent(lbTitImagenOriginal)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbImagenOriginal, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbTitDescripcionPaso)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE))
-                    .addComponent(spMuestraPaso, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE))
-                .addContainerGap())
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE))
         );
 
         menuBar.setName("menuBar"); // NOI18N
@@ -258,24 +260,39 @@ public class JTrafficView extends FrameView {
     private void miAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miAbrirActionPerformed
         JFileChooser abrirFichero = new JFileChooser();
         abrirFichero.showOpenDialog(this.getComponent());
+        File fichero = abrirFichero.getSelectedFile();
 
-        //lbImagenOriginal.setText(abrirFichero.getSelectedFile().getAbsolutePath());
+        if(fichero != null){
+            try{
+                BufferedImage imagenOriginal = ImageIO.read(fichero);
+                 ImageIcon imagen = new ImageIcon(
+                        imagenOriginal.getScaledInstance(jScrollPane1.getWidth(),
+                                jScrollPane1.getHeight(), Image.SCALE_DEFAULT));
+                lbImagenOriginal.setIcon(imagen);
+            } catch (IOException ex) {
+                Logger.getLogger(JTrafficView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_miAbrirActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lbImagenOriginal;
-    private javax.swing.JLabel lbTitDescripcionPaso;
-    private javax.swing.JLabel lbTitImagenOriginal;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem miAbrir;
     private javax.swing.JProgressBar progressBar;
-    private javax.swing.JScrollPane spMuestraPaso;
     private javax.swing.JLabel statusAnimationLabel;
     private javax.swing.JLabel statusMessageLabel;
     private javax.swing.JPanel statusPanel;
-    private javax.swing.JTextArea taDescripcionPaso;
     private javax.swing.JToolBar tbBarraHerr;
     // End of variables declaration//GEN-END:variables
 
