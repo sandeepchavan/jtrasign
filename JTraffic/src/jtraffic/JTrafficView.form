@@ -147,7 +147,7 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="lbB" min="-2" pref="250" max="-2" attributes="1"/>
-                                          <Component id="jLabel3" alignment="0" pref="250" max="32767" attributes="1"/>
+                                          <Component id="jLabel3" alignment="0" min="-2" pref="250" max="-2" attributes="1"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -302,7 +302,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Component id="lbRG_BY" min="-2" pref="250" max="-2" attributes="1"/>
-                                  <Component id="lbE" pref="250" max="32767" attributes="1"/>
+                                  <Component id="lbE" min="-2" pref="250" max="-2" attributes="1"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -444,14 +444,16 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <EmptySpace min="0" pref="286" max="32767" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="lbPirE0" alignment="0" min="-2" pref="187" max="-2" attributes="0"/>
-                                          <Component id="lbPirE1" alignment="0" min="-2" pref="187" max="-2" attributes="0"/>
                                           <Component id="lbPirE2" alignment="0" min="-2" pref="187" max="-2" attributes="0"/>
+                                          <Component id="lbPirE1" alignment="0" min="-2" pref="187" max="-2" attributes="0"/>
                                           <Component id="lbPirE3" alignment="0" min="-2" pref="187" max="-2" attributes="0"/>
+                                          <Component id="lbPirE4" alignment="0" min="-2" pref="187" max="-2" attributes="0"/>
+                                          <Component id="lbPirE5" alignment="0" min="-2" pref="187" max="-2" attributes="0"/>
+                                          <Component id="lbPirE6" alignment="0" min="-2" pref="187" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace pref="89" max="32767" attributes="0"/>
                                   </Group>
@@ -459,17 +461,22 @@
                             </DimensionLayout>
                             <DimensionLayout dim="1">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <EmptySpace min="0" pref="672" max="32767" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="lbPirE0" min="-2" pref="149" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                                       <Component id="lbPirE1" min="-2" pref="149" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="lbPirE2" min="-2" pref="149" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="lbPirE3" min="-2" pref="149" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="lbPirE4" min="-2" pref="149" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="lbPirE5" min="-2" pref="149" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="lbPirE6" min="-2" pref="149" max="-2" attributes="0"/>
+                                      <EmptySpace pref="33" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -499,6 +506,24 @@
                                 <Property name="name" type="java.lang.String" value="lbPirE3" noResource="true"/>
                               </Properties>
                             </Component>
+                            <Component class="javax.swing.JLabel" name="lbPirE4">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" resourceKey="lbPirE4.text"/>
+                                <Property name="name" type="java.lang.String" value="lbPirE4" noResource="true"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="lbPirE5">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" resourceKey="lbPirE5.text"/>
+                                <Property name="name" type="java.lang.String" value="lbPirE5" noResource="true"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="lbPirE6">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" resourceKey="lbPirE6.text"/>
+                                <Property name="name" type="java.lang.String" value="lbPirE6" noResource="true"/>
+                              </Properties>
+                            </Component>
                           </SubComponents>
                         </Container>
                       </SubComponents>
@@ -525,14 +550,16 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <EmptySpace min="0" pref="286" max="32767" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="lbPirRG0" alignment="0" min="-2" pref="187" max="-2" attributes="0"/>
                                           <Component id="lbPirRG1" alignment="0" min="-2" pref="187" max="-2" attributes="0"/>
                                           <Component id="lbPirRG2" alignment="0" min="-2" pref="187" max="-2" attributes="0"/>
                                           <Component id="lbPirRG3" alignment="0" min="-2" pref="187" max="-2" attributes="0"/>
+                                          <Component id="lbPirRG6" alignment="0" min="-2" pref="187" max="-2" attributes="0"/>
+                                          <Component id="lbPirRG5" alignment="0" min="-2" pref="187" max="-2" attributes="0"/>
+                                          <Component id="lbPirRG4" alignment="0" min="-2" pref="187" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace pref="89" max="32767" attributes="0"/>
                                   </Group>
@@ -540,7 +567,6 @@
                             </DimensionLayout>
                             <DimensionLayout dim="1">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <EmptySpace min="0" pref="672" max="32767" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="lbPirRG0" min="-2" pref="149" max="-2" attributes="0"/>
@@ -550,7 +576,13 @@
                                       <Component id="lbPirRG2" min="-2" pref="149" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="lbPirRG3" min="-2" pref="149" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="lbPirRG6" min="-2" pref="149" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="lbPirRG5" min="-2" pref="149" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="lbPirRG4" min="-2" pref="149" max="-2" attributes="0"/>
+                                      <EmptySpace pref="33" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -580,6 +612,24 @@
                                 <Property name="name" type="java.lang.String" value="lbPirRG3" noResource="true"/>
                               </Properties>
                             </Component>
+                            <Component class="javax.swing.JLabel" name="lbPirRG4">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" resourceKey="lbPirRG4.text"/>
+                                <Property name="name" type="java.lang.String" value="lbPirRG4" noResource="true"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="lbPirRG5">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" resourceKey="lbPirRG5.text"/>
+                                <Property name="name" type="java.lang.String" value="lbPirRG5" noResource="true"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="lbPirRG6">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" resourceKey="lbPirRG6.text"/>
+                                <Property name="name" type="java.lang.String" value="lbPirRG6" noResource="true"/>
+                              </Properties>
+                            </Component>
                           </SubComponents>
                         </Container>
                       </SubComponents>
@@ -606,22 +656,23 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <EmptySpace min="0" pref="286" max="32767" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="lbPirBY0" alignment="0" min="-2" pref="187" max="-2" attributes="0"/>
                                           <Component id="lbPirBY1" alignment="0" min="-2" pref="187" max="-2" attributes="0"/>
                                           <Component id="lbPirBY2" alignment="0" min="-2" pref="187" max="-2" attributes="0"/>
                                           <Component id="lbPirBY3" alignment="0" min="-2" pref="187" max="-2" attributes="0"/>
+                                          <Component id="lbPirBY4" alignment="0" min="-2" pref="187" max="-2" attributes="0"/>
+                                          <Component id="lbPirBY5" alignment="0" min="-2" pref="187" max="-2" attributes="0"/>
+                                          <Component id="lbPirBY6" alignment="0" min="-2" pref="187" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace pref="89" max="32767" attributes="0"/>
+                                      <EmptySpace pref="91" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
                             <DimensionLayout dim="1">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <EmptySpace min="0" pref="672" max="32767" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="lbPirBY0" min="-2" pref="149" max="-2" attributes="0"/>
@@ -631,7 +682,13 @@
                                       <Component id="lbPirBY2" min="-2" pref="149" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="lbPirBY3" min="-2" pref="149" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="lbPirBY4" min="-2" pref="149" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="lbPirBY5" min="-2" pref="149" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="lbPirBY6" min="-2" pref="149" max="-2" attributes="0"/>
+                                      <EmptySpace pref="35" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -659,6 +716,24 @@
                               <Properties>
                                 <Property name="text" type="java.lang.String" resourceKey="lbPirBY3.text"/>
                                 <Property name="name" type="java.lang.String" value="lbPirBY3" noResource="true"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="lbPirBY4">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" resourceKey="lbPirBY4.text"/>
+                                <Property name="name" type="java.lang.String" value="lbPirBY4" noResource="true"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="lbPirBY5">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" resourceKey="lbPirBY5.text"/>
+                                <Property name="name" type="java.lang.String" value="lbPirBY5" noResource="true"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="lbPirBY6">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" resourceKey="lbPirBY6.text"/>
+                                <Property name="name" type="java.lang.String" value="lbPirBY6" noResource="true"/>
                               </Properties>
                             </Component>
                           </SubComponents>
@@ -749,7 +824,6 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <EmptySpace min="0" pref="286" max="32767" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -764,7 +838,6 @@
                             </DimensionLayout>
                             <DimensionLayout dim="1">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <EmptySpace min="0" pref="672" max="32767" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="lbcsdE0" min="-2" pref="149" max="-2" attributes="0"/>
@@ -824,7 +897,6 @@
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <EmptySpace min="0" pref="286" max="32767" attributes="0"/>
-                                  <EmptySpace min="0" pref="286" max="32767" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -839,7 +911,6 @@
                             </DimensionLayout>
                             <DimensionLayout dim="1">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <EmptySpace min="0" pref="672" max="32767" attributes="0"/>
                                   <EmptySpace min="0" pref="672" max="32767" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
@@ -908,6 +979,87 @@
               </Constraints>
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Container class="javax.swing.JPanel" name="jPanel4">
+                  <Properties>
+                    <Property name="name" type="java.lang.String" value="jPanel4" noResource="true"/>
+                  </Properties>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="lbfmEdge" min="-2" pref="250" max="-2" attributes="1"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="lbfmColor" min="-2" pref="250" max="-2" attributes="1"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jLabel13" min="-2" pref="244" max="-2" attributes="1"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jLabel12" pref="256" max="32767" attributes="1"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace pref="394" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="lbfmEdge" alignment="1" min="-2" pref="250" max="-2" attributes="1"/>
+                                  <Component id="lbfmColor" alignment="1" min="-2" pref="250" max="-2" attributes="1"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="310" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JLabel" name="jLabel12">
+                      <Properties>
+                        <Property name="horizontalAlignment" type="int" value="0"/>
+                        <Property name="text" type="java.lang.String" resourceKey="jLabel12.text"/>
+                        <Property name="name" type="java.lang.String" value="jLabel12" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lbfmColor">
+                      <Properties>
+                        <Property name="horizontalAlignment" type="int" value="0"/>
+                        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[250, 250]"/>
+                        </Property>
+                        <Property name="name" type="java.lang.String" value="lbfmColor" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel13">
+                      <Properties>
+                        <Property name="horizontalAlignment" type="int" value="0"/>
+                        <Property name="text" type="java.lang.String" resourceKey="jLabel13.text"/>
+                        <Property name="name" type="java.lang.String" value="jLabel13" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lbfmEdge">
+                      <Properties>
+                        <Property name="horizontalAlignment" type="int" value="0"/>
+                        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[250, 250]"/>
+                        </Property>
+                        <Property name="name" type="java.lang.String" value="lbfmEdge" noResource="true"/>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+              </SubComponents>
             </Container>
             <Container class="javax.swing.JScrollPane" name="spPaso6">
               <Properties>
@@ -922,6 +1074,54 @@
               </Constraints>
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Container class="javax.swing.JPanel" name="jPanel5">
+                  <Properties>
+                    <Property name="name" type="java.lang.String" value="jPanel5" noResource="true"/>
+                  </Properties>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="jLabel14" alignment="0" max="32767" attributes="1"/>
+                                  <Component id="lbSaliency" alignment="0" pref="475" max="32767" attributes="1"/>
+                              </Group>
+                              <EmptySpace pref="340" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lbSaliency" min="-2" pref="367" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="188" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JLabel" name="lbSaliency">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="lbSaliency.text"/>
+                        <Property name="name" type="java.lang.String" value="lbSaliency" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel14">
+                      <Properties>
+                        <Property name="horizontalAlignment" type="int" value="0"/>
+                        <Property name="text" type="java.lang.String" resourceKey="jLabel14.text"/>
+                        <Property name="name" type="java.lang.String" value="jLabel14" noResource="true"/>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+              </SubComponents>
             </Container>
             <Container class="javax.swing.JScrollPane" name="spResultados">
               <Properties>

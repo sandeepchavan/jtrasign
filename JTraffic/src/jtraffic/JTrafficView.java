@@ -149,6 +149,9 @@ public class JTrafficView extends FrameView {
         lbPirE1 = new javax.swing.JLabel();
         lbPirE2 = new javax.swing.JLabel();
         lbPirE3 = new javax.swing.JLabel();
+        lbPirE4 = new javax.swing.JLabel();
+        lbPirE5 = new javax.swing.JLabel();
+        lbPirE6 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jPanel11 = new javax.swing.JPanel();
@@ -156,6 +159,9 @@ public class JTrafficView extends FrameView {
         lbPirRG1 = new javax.swing.JLabel();
         lbPirRG2 = new javax.swing.JLabel();
         lbPirRG3 = new javax.swing.JLabel();
+        lbPirRG4 = new javax.swing.JLabel();
+        lbPirRG5 = new javax.swing.JLabel();
+        lbPirRG6 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
         jPanel12 = new javax.swing.JPanel();
@@ -163,6 +169,9 @@ public class JTrafficView extends FrameView {
         lbPirBY1 = new javax.swing.JLabel();
         lbPirBY2 = new javax.swing.JLabel();
         lbPirBY3 = new javax.swing.JLabel();
+        lbPirBY4 = new javax.swing.JLabel();
+        lbPirBY5 = new javax.swing.JLabel();
+        lbPirBY6 = new javax.swing.JLabel();
         spPaso4 = new javax.swing.JScrollPane();
         jPanel7 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -180,7 +189,15 @@ public class JTrafficView extends FrameView {
         lbcsdC3 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         spPaso5 = new javax.swing.JScrollPane();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        lbfmColor = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        lbfmEdge = new javax.swing.JLabel();
         spPaso6 = new javax.swing.JScrollPane();
+        jPanel5 = new javax.swing.JPanel();
+        lbSaliency = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
         spResultados = new javax.swing.JScrollPane();
         menuBar = new javax.swing.JMenuBar();
         javax.swing.JMenu fileMenu = new javax.swing.JMenu();
@@ -303,7 +320,7 @@ public class JTrafficView extends FrameView {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbB, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))))
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(292, 292, 292))
         );
         jPanel1Layout.setVerticalGroup(
@@ -377,7 +394,7 @@ public class JTrafficView extends FrameView {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lbRG_BY, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbE, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))
+                    .addComponent(lbE, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -413,23 +430,33 @@ public class JTrafficView extends FrameView {
         lbPirE3.setText(resourceMap.getString("lbPirE3.text")); // NOI18N
         lbPirE3.setName("lbPirE3"); // NOI18N
 
+        lbPirE4.setText(resourceMap.getString("lbPirE4.text")); // NOI18N
+        lbPirE4.setName("lbPirE4"); // NOI18N
+
+        lbPirE5.setText(resourceMap.getString("lbPirE5.text")); // NOI18N
+        lbPirE5.setName("lbPirE5"); // NOI18N
+
+        lbPirE6.setText(resourceMap.getString("lbPirE6.text")); // NOI18N
+        lbPirE6.setName("lbPirE6"); // NOI18N
+
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 286, Short.MAX_VALUE)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbPirE0, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbPirE1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbPirE2, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbPirE3, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbPirE1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbPirE3, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbPirE4, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbPirE5, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbPirE6, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(89, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 672, Short.MAX_VALUE)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lbPirE0, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -439,7 +466,13 @@ public class JTrafficView extends FrameView {
                 .addComponent(lbPirE2, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lbPirE3, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(lbPirE4, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lbPirE5, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lbPirE6, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         jScrollPane3.setViewportView(jPanel10);
@@ -464,23 +497,33 @@ public class JTrafficView extends FrameView {
         lbPirRG3.setText(resourceMap.getString("lbPirRG3.text")); // NOI18N
         lbPirRG3.setName("lbPirRG3"); // NOI18N
 
+        lbPirRG4.setText(resourceMap.getString("lbPirRG4.text")); // NOI18N
+        lbPirRG4.setName("lbPirRG4"); // NOI18N
+
+        lbPirRG5.setText(resourceMap.getString("lbPirRG5.text")); // NOI18N
+        lbPirRG5.setName("lbPirRG5"); // NOI18N
+
+        lbPirRG6.setText(resourceMap.getString("lbPirRG6.text")); // NOI18N
+        lbPirRG6.setName("lbPirRG6"); // NOI18N
+
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 286, Short.MAX_VALUE)
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbPirRG0, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbPirRG1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbPirRG2, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbPirRG3, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbPirRG3, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbPirRG6, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbPirRG5, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbPirRG4, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(89, Short.MAX_VALUE))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 672, Short.MAX_VALUE)
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lbPirRG0, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -490,7 +533,13 @@ public class JTrafficView extends FrameView {
                 .addComponent(lbPirRG2, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lbPirRG3, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(lbPirRG6, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lbPirRG5, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lbPirRG4, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         jScrollPane4.setViewportView(jPanel11);
@@ -515,23 +564,33 @@ public class JTrafficView extends FrameView {
         lbPirBY3.setText(resourceMap.getString("lbPirBY3.text")); // NOI18N
         lbPirBY3.setName("lbPirBY3"); // NOI18N
 
+        lbPirBY4.setText(resourceMap.getString("lbPirBY4.text")); // NOI18N
+        lbPirBY4.setName("lbPirBY4"); // NOI18N
+
+        lbPirBY5.setText(resourceMap.getString("lbPirBY5.text")); // NOI18N
+        lbPirBY5.setName("lbPirBY5"); // NOI18N
+
+        lbPirBY6.setText(resourceMap.getString("lbPirBY6.text")); // NOI18N
+        lbPirBY6.setName("lbPirBY6"); // NOI18N
+
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
         jPanel12Layout.setHorizontalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 286, Short.MAX_VALUE)
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbPirBY0, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbPirBY1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbPirBY2, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbPirBY3, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(89, Short.MAX_VALUE))
+                    .addComponent(lbPirBY3, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbPirBY4, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbPirBY5, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbPirBY6, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 672, Short.MAX_VALUE)
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lbPirBY0, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -541,7 +600,13 @@ public class JTrafficView extends FrameView {
                 .addComponent(lbPirBY2, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lbPirBY3, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(lbPirBY4, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lbPirBY5, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lbPirBY6, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         jScrollPane5.setViewportView(jPanel12);
@@ -617,7 +682,6 @@ public class JTrafficView extends FrameView {
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 286, Short.MAX_VALUE)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -629,7 +693,6 @@ public class JTrafficView extends FrameView {
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 672, Short.MAX_VALUE)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lbcsdE0, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -665,7 +728,6 @@ public class JTrafficView extends FrameView {
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 286, Short.MAX_VALUE)
-            .addGap(0, 286, Short.MAX_VALUE)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -677,7 +739,6 @@ public class JTrafficView extends FrameView {
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 672, Short.MAX_VALUE)
             .addGap(0, 672, Short.MAX_VALUE)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
@@ -732,9 +793,94 @@ public class JTrafficView extends FrameView {
         jTabbedPane1.addTab(resourceMap.getString("spPaso4.TabConstraints.tabTitle"), spPaso4); // NOI18N
 
         spPaso5.setName("spPaso5"); // NOI18N
+
+        jPanel4.setName("jPanel4"); // NOI18N
+
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setText(resourceMap.getString("jLabel12.text")); // NOI18N
+        jLabel12.setName("jLabel12"); // NOI18N
+
+        lbfmColor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbfmColor.setMaximumSize(new java.awt.Dimension(250, 250));
+        lbfmColor.setName("lbfmColor"); // NOI18N
+
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel13.setText(resourceMap.getString("jLabel13.text")); // NOI18N
+        jLabel13.setName("jLabel13"); // NOI18N
+
+        lbfmEdge.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbfmEdge.setMaximumSize(new java.awt.Dimension(250, 250));
+        lbfmEdge.setName("lbfmEdge"); // NOI18N
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(lbfmEdge, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbfmColor, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)))
+                .addContainerGap(394, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lbfmEdge, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbfmColor, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(jLabel12))
+                .addContainerGap(310, Short.MAX_VALUE))
+        );
+
+        spPaso5.setViewportView(jPanel4);
+
         jTabbedPane1.addTab(resourceMap.getString("spPaso5.TabConstraints.tabTitle"), spPaso5); // NOI18N
 
         spPaso6.setName("spPaso6"); // NOI18N
+
+        jPanel5.setName("jPanel5"); // NOI18N
+
+        lbSaliency.setText(resourceMap.getString("lbSaliency.text")); // NOI18N
+        lbSaliency.setName("lbSaliency"); // NOI18N
+
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel14.setText(resourceMap.getString("jLabel14.text")); // NOI18N
+        jLabel14.setName("jLabel14"); // NOI18N
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbSaliency, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 475, Short.MAX_VALUE))
+                .addContainerGap(340, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbSaliency, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel14)
+                .addContainerGap(188, Short.MAX_VALUE))
+        );
+
+        spPaso6.setViewportView(jPanel5);
+
         jTabbedPane1.addTab(resourceMap.getString("spPaso6.TabConstraints.tabTitle"), spPaso6); // NOI18N
 
         spResultados.setName("spResultados"); // NOI18N
@@ -890,6 +1036,9 @@ public class JTrafficView extends FrameView {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -904,6 +1053,8 @@ public class JTrafficView extends FrameView {
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
@@ -921,16 +1072,26 @@ public class JTrafficView extends FrameView {
     private javax.swing.JLabel lbPirBY1;
     private javax.swing.JLabel lbPirBY2;
     private javax.swing.JLabel lbPirBY3;
+    private javax.swing.JLabel lbPirBY4;
+    private javax.swing.JLabel lbPirBY5;
+    private javax.swing.JLabel lbPirBY6;
     private javax.swing.JLabel lbPirE0;
     private javax.swing.JLabel lbPirE1;
     private javax.swing.JLabel lbPirE2;
     private javax.swing.JLabel lbPirE3;
+    private javax.swing.JLabel lbPirE4;
+    private javax.swing.JLabel lbPirE5;
+    private javax.swing.JLabel lbPirE6;
     private javax.swing.JLabel lbPirRG0;
     private javax.swing.JLabel lbPirRG1;
     private javax.swing.JLabel lbPirRG2;
     private javax.swing.JLabel lbPirRG3;
+    private javax.swing.JLabel lbPirRG4;
+    private javax.swing.JLabel lbPirRG5;
+    private javax.swing.JLabel lbPirRG6;
     private javax.swing.JLabel lbR;
     private javax.swing.JLabel lbRG_BY;
+    private javax.swing.JLabel lbSaliency;
     private javax.swing.JLabel lbTextoImagenOriginal;
     private javax.swing.JLabel lbY;
     private javax.swing.JLabel lbcsdC0;
@@ -941,6 +1102,8 @@ public class JTrafficView extends FrameView {
     private javax.swing.JLabel lbcsdE1;
     private javax.swing.JLabel lbcsdE2;
     private javax.swing.JLabel lbcsdE3;
+    private javax.swing.JLabel lbfmColor;
+    private javax.swing.JLabel lbfmEdge;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem miAbrir;
