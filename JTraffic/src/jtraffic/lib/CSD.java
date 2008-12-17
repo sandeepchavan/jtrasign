@@ -18,8 +18,7 @@ public class CSD {
      * @param piramide
      * @return
      */
-    /*
     public static List<BufferedImage> aplicar(List<BufferedImage> piramide){
-
-    }*/
+        return null;
+    }
 }

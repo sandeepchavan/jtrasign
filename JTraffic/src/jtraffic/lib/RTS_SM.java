@@ -12,8 +12,7 @@ import java.awt.image.BufferedImage;
  * @author JuanmaSP
  */
 public class RTS_SM {
-    /*
     public static BufferedImage construir(BufferedImage edge, BufferedImage color, float pesoEdge, float pesoColor){
-        
-    }*/
+        return null;
+    }
 }
