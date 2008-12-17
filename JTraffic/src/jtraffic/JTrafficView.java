@@ -24,11 +24,15 @@ import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import jtraffic.lib.ImagenesNormalizadas;
 
 /**
  * The application's main frame.
  */
 public class JTrafficView extends FrameView {
+
+    private BufferedImage imagenOriginal;
+    private BufferedImage imagenesNormalizadas[];
 
     public JTrafficView(SingleFrameApplication app) {
         super(app);
@@ -118,6 +122,12 @@ public class JTrafficView extends FrameView {
         lbTextoImagenOriginal = new javax.swing.JLabel();
         spPaso1 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
+        lbR = new javax.swing.JLabel();
+        lbG = new javax.swing.JLabel();
+        lbB = new javax.swing.JLabel();
+        lbY = new javax.swing.JLabel();
+        lbRG_BY = new javax.swing.JLabel();
+        lbE = new javax.swing.JLabel();
         spPaso2 = new javax.swing.JScrollPane();
         spPaso3 = new javax.swing.JScrollPane();
         spPaso4 = new javax.swing.JScrollPane();
@@ -128,6 +138,8 @@ public class JTrafficView extends FrameView {
         javax.swing.JMenu fileMenu = new javax.swing.JMenu();
         miAbrir = new javax.swing.JMenuItem();
         javax.swing.JMenuItem exitMenuItem = new javax.swing.JMenuItem();
+        exMenu = new javax.swing.JMenu();
+        miLanzar = new javax.swing.JMenuItem();
         javax.swing.JMenu helpMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem aboutMenuItem = new javax.swing.JMenuItem();
         statusPanel = new javax.swing.JPanel();
@@ -185,15 +197,58 @@ public class JTrafficView extends FrameView {
 
         jPanel1.setName("jPanel1"); // NOI18N
 
+        lbR.setText(resourceMap.getString("lbR.text")); // NOI18N
+        lbR.setName("lbR"); // NOI18N
+
+        lbG.setText(resourceMap.getString("lbG.text")); // NOI18N
+        lbG.setName("lbG"); // NOI18N
+
+        lbB.setText(resourceMap.getString("lbB.text")); // NOI18N
+        lbB.setName("lbB"); // NOI18N
+
+        lbY.setText(resourceMap.getString("lbY.text")); // NOI18N
+        lbY.setName("lbY"); // NOI18N
+
+        lbRG_BY.setText(resourceMap.getString("lbRG_BY.text")); // NOI18N
+        lbRG_BY.setName("lbRG_BY"); // NOI18N
+
+        lbE.setText(resourceMap.getString("lbE.text")); // NOI18N
+        lbE.setName("lbE"); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 825, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lbR, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lbG, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lbB, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lbY, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lbRG_BY, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lbE, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(159, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 429, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbR, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbG, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbB, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbY, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbRG_BY, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbE, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(122, Short.MAX_VALUE))
         );
 
         spPaso1.setViewportView(jPanel1);
@@ -255,6 +310,25 @@ public class JTrafficView extends FrameView {
 
         menuBar.add(fileMenu);
 
+        exMenu.setText(resourceMap.getString("exMenu.text")); // NOI18N
+        exMenu.setName("exMenu"); // NOI18N
+        exMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exMenuActionPerformed(evt);
+            }
+        });
+
+        miLanzar.setText(resourceMap.getString("miLanzar.text")); // NOI18N
+        miLanzar.setName("miLanzar"); // NOI18N
+        miLanzar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miLanzarActionPerformed(evt);
+            }
+        });
+        exMenu.add(miLanzar);
+
+        menuBar.add(exMenu);
+
         helpMenu.setText(resourceMap.getString("helpMenu.text")); // NOI18N
         helpMenu.setName("helpMenu"); // NOI18N
 
@@ -313,7 +387,7 @@ public class JTrafficView extends FrameView {
 
         if(fichero != null){
             try{
-                BufferedImage imagenOriginal = ImageIO.read(fichero);
+                imagenOriginal = ImageIO.read(fichero);
                  ImageIcon imagen = new ImageIcon(
                         imagenOriginal.getScaledInstance(spImagenOriginal.getWidth(),
                                 spImagenOriginal.getHeight(), Image.SCALE_DEFAULT));
@@ -324,14 +398,38 @@ public class JTrafficView extends FrameView {
         }
     }//GEN-LAST:event_miAbrirActionPerformed
 
+    private void exMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exMenuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_exMenuActionPerformed
+
+    private void miLanzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miLanzarActionPerformed
+        imagenesNormalizadas = ImagenesNormalizadas.construirRGBYE(imagenOriginal);
+
+        lbR.setIcon(new ImageIcon((Image)(imagenesNormalizadas[ImagenesNormalizadas.R])));
+        lbG.setIcon(new ImageIcon((Image)(imagenesNormalizadas[ImagenesNormalizadas.G])));
+        lbB.setIcon(new ImageIcon((Image)(imagenesNormalizadas[ImagenesNormalizadas.B])));
+        lbY.setIcon(new ImageIcon((Image)(imagenesNormalizadas[ImagenesNormalizadas.Y])));
+        lbRG_BY.setIcon(new ImageIcon((Image)(imagenesNormalizadas[ImagenesNormalizadas.RG_BY])));
+        lbE.setIcon(new ImageIcon((Image)(imagenesNormalizadas[ImagenesNormalizadas.E])));
+
+    }//GEN-LAST:event_miLanzarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu exMenu;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel lbB;
+    private javax.swing.JLabel lbE;
+    private javax.swing.JLabel lbG;
     private javax.swing.JLabel lbImagenOriginal;
+    private javax.swing.JLabel lbR;
+    private javax.swing.JLabel lbRG_BY;
     private javax.swing.JLabel lbTextoImagenOriginal;
+    private javax.swing.JLabel lbY;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem miAbrir;
+    private javax.swing.JMenuItem miLanzar;
     private javax.swing.JPanel panelImagenOriginal;
     private javax.swing.JProgressBar progressBar;
     private javax.swing.JScrollPane spImagenOriginal;
