@@ -143,6 +143,6 @@ public class ImagenesNormalizadas {
         resultado[0] = FiltroSobel.aplicar(bi, FiltroSobel.Sx, Convolucion.SIN_BORDES);
         resultado[1] = FiltroSobel.aplicar(bi, FiltroSobel.Sy, Convolucion.SIN_BORDES);
 
-    return resultado;
-}
+        return resultado;
+    }
 }

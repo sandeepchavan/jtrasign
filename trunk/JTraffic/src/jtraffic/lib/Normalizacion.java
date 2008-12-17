@@ -12,8 +12,8 @@ import java.awt.image.BufferedImage;
  * @author JuanmaSP
  */
 public class Normalizacion {
-    /*
+    
     public static BufferedImage aplicar(BufferedImage imagen){
-        
-    }*/
+        return null;
+    }
 }
