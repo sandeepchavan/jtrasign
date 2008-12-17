@@ -5,6 +5,7 @@
 package jtraffic;
 
 import java.awt.Image;
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,6 +16,7 @@ import org.jdesktop.application.FrameView;
 import org.jdesktop.application.TaskMonitor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import javax.imageio.ImageIO;
@@ -25,6 +27,7 @@ import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import jtraffic.gui.events.MouseListenerImagenesLabel;
 import jtraffic.lib.ImagenesNormalizadas;
 
 /**
@@ -452,10 +455,7 @@ public class JTrafficView extends FrameView {
         if(fichero != null){
             try{
                 imagenOriginal = ImageIO.read(fichero);
-                 ImageIcon imagen = new ImageIcon(
-                        imagenOriginal.getScaledInstance(spImagenOriginal.getWidth(),
-                                spImagenOriginal.getHeight(), Image.SCALE_DEFAULT));
-                lbImagenOriginal.setIcon(imagen);
+                asignaImagenALabel(lbImagenOriginal, imagenOriginal);
             } catch (IOException ex) {
                 Logger.getLogger(JTrafficView.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -475,11 +475,14 @@ public class JTrafficView extends FrameView {
         asignaImagenALabel(lbY, imagenesNormalizadas[ImagenesNormalizadas.Y]);
         asignaImagenALabel(lbRG_BY, imagenesNormalizadas[ImagenesNormalizadas.RG_BY]);
         asignaImagenALabel(lbE, imagenesNormalizadas[ImagenesNormalizadas.E]);
+
+        
     }//GEN-LAST:event_miLanzarActionPerformed
 
     private void asignaImagenALabel(JLabel label, BufferedImage imagen){
         Image aux = imagen.getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_DEFAULT);
         label.setIcon(new ImageIcon(aux));
+        label.addMouseListener(new MouseListenerImagenesLabel(this.getFrame(), imagen, true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
