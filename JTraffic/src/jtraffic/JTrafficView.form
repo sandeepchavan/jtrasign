@@ -158,7 +158,7 @@
                                   <Component id="lbB" alignment="0" pref="250" max="32767" attributes="1"/>
                                   <Component id="lbE" alignment="0" pref="250" max="32767" attributes="1"/>
                               </Group>
-                              <EmptySpace min="-2" pref="522" max="-2" attributes="0"/>
+                              <EmptySpace pref="83" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -189,7 +189,7 @@
                                   <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="247" max="32767" attributes="0"/>
+                              <EmptySpace pref="50" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
