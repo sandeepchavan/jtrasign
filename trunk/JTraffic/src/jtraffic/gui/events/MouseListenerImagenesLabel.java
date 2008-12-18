@@ -29,6 +29,7 @@ public class MouseListenerImagenesLabel implements MouseListener{
 
     public void mouseClicked(MouseEvent e) {
         ImageDialog dialog = new ImageDialog(image, creador, modo);
+        dialog.setTitle("");
         dialog.show();
     }
 

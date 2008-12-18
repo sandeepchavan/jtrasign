@@ -139,6 +139,8 @@ public class OperacionesImagenes {
         BufferedImage res = new BufferedImage(640, 480, c.getType());
         WritableRaster wr = res.getRaster();
 
+        System.out.println("Nivel c: " + nC + ", nivel s: " + nS);
+
         Raster rc = c.getData();
         Raster rs = s.getData();
 
@@ -155,7 +157,7 @@ public class OperacionesImagenes {
 
                 int pixelC[] = null;
                 pixelC = rc.getPixel(yC , xC, pixelC);
-
+                //System.out.println("Accediendo a la posicion: (" + yS + "," + xS + ")");
                 int pixelS[] = null;
                 pixelS = rs.getPixel(yS , xS, pixelS);
 
