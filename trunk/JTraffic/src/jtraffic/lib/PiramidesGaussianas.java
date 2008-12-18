@@ -31,7 +31,10 @@ public class PiramidesGaussianas {
         res.add(aux);
         num --;
         while(aux.getWidth() > 1 && aux.getHeight() > 1 && num > 0){
-            BufferedImage aux2 = new BufferedImage(aux.getWidth() / 2, aux.getHeight() /2, aux.getType());
+            BufferedImage aux2 = new BufferedImage(
+                    (int)Math.ceil(aux.getWidth() / 2.0),
+                    (int)Math.ceil(aux.getHeight() /2.0),
+                    aux.getType());
             Graphics2D g = aux2.createGraphics();
             
             g.drawImage(aux, 0, 0, aux2.getWidth() + 2, aux2.getHeight()+ 2, null);

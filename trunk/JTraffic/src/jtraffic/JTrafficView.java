@@ -6,7 +6,6 @@ package jtraffic;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,10 +16,8 @@ import org.jdesktop.application.FrameView;
 import org.jdesktop.application.TaskMonitor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.util.LinkedList;
 import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.Timer;
@@ -34,7 +31,6 @@ import jtraffic.gui.events.MouseListenerImagenesLabel;
 import jtraffic.lib.CSD;
 import jtraffic.lib.ImagenesNormalizadas;
 import jtraffic.lib.PiramidesGaussianas;
-import jtraffic.lib.filtros.FiltroGaussiano;
 
 /**
  * The application's main frame.
@@ -1086,6 +1082,8 @@ public class JTrafficView extends FrameView {
                 imagenOriginal = aux2;
 
                 asignaImagenALabel(lbImagenOriginal, imagenOriginal);
+
+                jTabbedPane1.setSelectedIndex(0);
             } catch (IOException ex) {
                 Logger.getLogger(JTrafficView.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -1157,11 +1155,6 @@ public class JTrafficView extends FrameView {
         asignaImagenALabel(lbcsdBY1, csdBY.get(1));
         asignaImagenALabel(lbcsdBY2, csdBY.get(2));
         asignaImagenALabel(lbcsdBY3, csdBY.get(3));
-
-
-        
-    
-
         
     }//GEN-LAST:event_miLanzarActionPerformed
 
