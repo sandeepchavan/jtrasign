@@ -19,7 +19,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="tbBarraHerr" min="-2" pref="25" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jTabbedPane1" pref="624" max="32767" attributes="0"/>
+                  <Component id="jTabbedPane1" pref="619" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -620,7 +620,6 @@
                             </Component>
                             <Component class="javax.swing.JLabel" name="lbPirRG6">
                               <Properties>
-                                <Property name="text" type="java.lang.String" resourceKey="lbPirRG6.text"/>
                                 <Property name="name" type="java.lang.String" value="lbPirRG6" noResource="true"/>
                               </Properties>
                             </Component>
@@ -1330,7 +1329,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="statusMessageLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="658" max="32767" attributes="0"/>
+                  <EmptySpace pref="662" max="32767" attributes="0"/>
                   <Component id="progressBar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="statusAnimationLabel" min="-2" max="-2" attributes="0"/>

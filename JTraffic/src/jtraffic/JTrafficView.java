@@ -4,6 +4,7 @@
 
 package jtraffic;
 
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
@@ -33,6 +34,7 @@ import jtraffic.gui.events.MouseListenerImagenesLabel;
 import jtraffic.lib.CSD;
 import jtraffic.lib.ImagenesNormalizadas;
 import jtraffic.lib.PiramidesGaussianas;
+import jtraffic.lib.filtros.FiltroGaussiano;
 
 /**
  * The application's main frame.
@@ -1074,6 +1076,15 @@ public class JTrafficView extends FrameView {
         if(fichero != null){
             try{
                 imagenOriginal = ImageIO.read(fichero);
+
+                BufferedImage aux2 = new BufferedImage(640, 480, imagenOriginal.getType());
+                Graphics2D g = aux2.createGraphics();
+
+                g.drawImage(imagenOriginal, 0, 0, aux2.getWidth() + 2, aux2.getHeight()+ 2, null);
+                g.dispose();
+
+                imagenOriginal = aux2;
+
                 asignaImagenALabel(lbImagenOriginal, imagenOriginal);
             } catch (IOException ex) {
                 Logger.getLogger(JTrafficView.class.getName()).log(Level.SEVERE, null, ex);
