@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author JuanmaSP
  */
-public class SumaImagenes {
+public class OperacionesImagenes {
     public static BufferedImage sumaImagenes(BufferedImage a, BufferedImage b){
         return null;
     }
