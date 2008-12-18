@@ -31,6 +31,7 @@ import jtraffic.gui.events.MouseListenerImagenesLabel;
 import jtraffic.lib.CSD;
 import jtraffic.lib.ImagenesNormalizadas;
 import jtraffic.lib.PiramidesGaussianas;
+import jtraffic.lib.RTS_SM;
 
 /**
  * The application's main frame.
@@ -45,6 +46,7 @@ public class JTrafficView extends FrameView {
     private List<BufferedImage> csdBorde;
     private List<BufferedImage> csdRG;
     private List<BufferedImage> csdBY;
+    private List<BufferedImage> saliencyMap;
 
     public JTrafficView(SingleFrameApplication app) {
         super(app);
@@ -319,8 +321,8 @@ public class JTrafficView extends FrameView {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lbR, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -328,14 +330,14 @@ public class JTrafficView extends FrameView {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lbG, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lbY, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lbB, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lbY, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))))
                 .addGap(292, 292, 292))
         );
         jPanel1Layout.setVerticalGroup(
@@ -515,7 +517,6 @@ public class JTrafficView extends FrameView {
         lbPirRG4.setText(resourceMap.getString("lbPirRG4.text")); // NOI18N
         lbPirRG4.setName("lbPirRG4"); // NOI18N
 
-        lbPirRG6.setText(resourceMap.getString("lbPirRG6.text")); // NOI18N
         lbPirRG6.setName("lbPirRG6"); // NOI18N
 
         lbPirRG5.setText(resourceMap.getString("lbPirRG5.text")); // NOI18N
@@ -969,7 +970,7 @@ public class JTrafficView extends FrameView {
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addComponent(tbBarraHerr, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 624, Short.MAX_VALUE))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 621, Short.MAX_VALUE))
         );
 
         menuBar.setName("menuBar"); // NOI18N
@@ -1041,7 +1042,7 @@ public class JTrafficView extends FrameView {
             .addGroup(statusPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(statusMessageLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 658, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 662, Short.MAX_VALUE)
                 .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(statusAnimationLabel)
@@ -1155,7 +1156,12 @@ public class JTrafficView extends FrameView {
         asignaImagenALabel(lbcsdBY1, csdBY.get(1));
         asignaImagenALabel(lbcsdBY2, csdBY.get(2));
         asignaImagenALabel(lbcsdBY3, csdBY.get(3));
-        
+
+        //Paso 6: Mapa de Prominecias (RTS_SM)
+        saliencyMap = RTS_SM.construirRTS_SM(csdBorde, csdRG, csdBY, 0.5f, 0.5f);
+        asignaImagenALabel(lbfmEdge, saliencyMap.get(0));
+        asignaImagenALabel(lbfmColor, saliencyMap.get(1));
+        asignaImagenALabel(lbSaliency, saliencyMap.get(2));
     }//GEN-LAST:event_miLanzarActionPerformed
 
     private void asignaImagenALabel(JLabel label, BufferedImage imagen){
