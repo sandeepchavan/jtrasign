@@ -48,6 +48,8 @@ public class JTrafficView extends FrameView {
     private List<BufferedImage> csdBY;
     private List<BufferedImage> saliencyMap;
 
+    private boolean algTerminado = false;
+
     public JTrafficView(SingleFrameApplication app) {
         super(app);
 
@@ -258,22 +260,35 @@ public class JTrafficView extends FrameView {
 
         bBack.setIcon(resourceMap.getIcon("bBack.icon")); // NOI18N
         bBack.setText(resourceMap.getString("bBack.text")); // NOI18N
+        bBack.setEnabled(false);
         bBack.setFocusable(false);
         bBack.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         bBack.setName("bBack"); // NOI18N
         bBack.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        bBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bBackActionPerformed(evt);
+            }
+        });
         tbBarraHerr.add(bBack);
 
         bNext.setIcon(resourceMap.getIcon("bNext.icon")); // NOI18N
         bNext.setText(resourceMap.getString("bNext.text")); // NOI18N
+        bNext.setEnabled(false);
         bNext.setFocusable(false);
         bNext.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         bNext.setName("bNext"); // NOI18N
         bNext.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        bNext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bNextActionPerformed(evt);
+            }
+        });
         tbBarraHerr.add(bNext);
 
         bLanzar.setIcon(resourceMap.getIcon("bLanzar.icon")); // NOI18N
         bLanzar.setText(resourceMap.getString("bLanzar.text")); // NOI18N
+        bLanzar.setEnabled(false);
         bLanzar.setFocusable(false);
         bLanzar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         bLanzar.setName("bLanzar"); // NOI18N
@@ -286,6 +301,11 @@ public class JTrafficView extends FrameView {
         tbBarraHerr.add(bLanzar);
 
         jTabbedPane1.setName("jTabbedPane1"); // NOI18N
+        jTabbedPane1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jTabbedPane1StateChanged(evt);
+            }
+        });
 
         spImagenOriginal.setName("spImagenOriginal"); // NOI18N
 
@@ -414,6 +434,7 @@ public class JTrafficView extends FrameView {
 
         jTabbedPane1.addTab(resourceMap.getString("spPaso1.TabConstraints.tabTitle"), spPaso1); // NOI18N
 
+        spPaso2.setEnabled(false);
         spPaso2.setName("spPaso2"); // NOI18N
 
         jPanel2.setName("jPanel2"); // NOI18N
@@ -471,6 +492,7 @@ public class JTrafficView extends FrameView {
 
         jTabbedPane1.addTab(resourceMap.getString("spPaso2.TabConstraints.tabTitle"), spPaso2); // NOI18N
 
+        spPaso3.setEnabled(false);
         spPaso3.setName("spPaso3"); // NOI18N
 
         jPanel3.setName("jPanel3"); // NOI18N
@@ -718,6 +740,7 @@ public class JTrafficView extends FrameView {
 
         jTabbedPane1.addTab(resourceMap.getString("spPaso3.TabConstraints.tabTitle"), spPaso3); // NOI18N
 
+        spPaso4.setEnabled(false);
         spPaso4.setName("spPaso4"); // NOI18N
 
         jPanel7.setName("jPanel7"); // NOI18N
@@ -912,6 +935,7 @@ public class JTrafficView extends FrameView {
 
         jTabbedPane1.addTab(resourceMap.getString("spPaso4.TabConstraints.tabTitle"), spPaso4); // NOI18N
 
+        spPaso5.setEnabled(false);
         spPaso5.setName("spPaso5"); // NOI18N
 
         jPanel4.setName("jPanel4"); // NOI18N
@@ -967,6 +991,7 @@ public class JTrafficView extends FrameView {
 
         jTabbedPane1.addTab(resourceMap.getString("spPaso5.TabConstraints.tabTitle"), spPaso5); // NOI18N
 
+        spPaso6.setEnabled(false);
         spPaso6.setName("spPaso6"); // NOI18N
 
         jPanel5.setName("jPanel5"); // NOI18N
@@ -1003,6 +1028,7 @@ public class JTrafficView extends FrameView {
 
         jTabbedPane1.addTab(resourceMap.getString("spPaso6.TabConstraints.tabTitle"), spPaso6); // NOI18N
 
+        spResultados.setEnabled(false);
         spResultados.setName("spResultados"); // NOI18N
         jTabbedPane1.addTab(resourceMap.getString("spResultados.TabConstraints.tabTitle"), spResultados); // NOI18N
 
@@ -1056,16 +1082,29 @@ public class JTrafficView extends FrameView {
 
         miPasoAnterior.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, 0));
         miPasoAnterior.setText(resourceMap.getString("miPasoAnterior.text")); // NOI18N
+        miPasoAnterior.setEnabled(false);
         miPasoAnterior.setName("miPasoAnterior"); // NOI18N
+        miPasoAnterior.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miPasoAnteriorActionPerformed(evt);
+            }
+        });
         exMenu.add(miPasoAnterior);
 
         miPasoSiguiente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F6, 0));
         miPasoSiguiente.setText(resourceMap.getString("miPasoSiguiente.text")); // NOI18N
+        miPasoSiguiente.setEnabled(false);
         miPasoSiguiente.setName("miPasoSiguiente"); // NOI18N
+        miPasoSiguiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miPasoSiguienteActionPerformed(evt);
+            }
+        });
         exMenu.add(miPasoSiguiente);
 
         miLanzar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F7, 0));
         miLanzar.setText(resourceMap.getString("miLanzar.text")); // NOI18N
+        miLanzar.setEnabled(false);
         miLanzar.setName("miLanzar"); // NOI18N
         miLanzar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1152,6 +1191,12 @@ public class JTrafficView extends FrameView {
                 asignaImagenALabel(lbImagenOriginal, imagenOriginal);
 
                 jTabbedPane1.setSelectedIndex(0);
+                miPasoAnterior.setEnabled(false);
+                miPasoSiguiente.setEnabled(true);
+                miLanzar.setEnabled(true);
+                bBack.setEnabled(false);
+                bNext.setEnabled(true);
+                bLanzar.setEnabled(true);
             } catch (IOException ex) {
                 Logger.getLogger(JTrafficView.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -1233,6 +1278,8 @@ public class JTrafficView extends FrameView {
         asignaImagenALabel(lbfmEdge, saliencyMap.get(0));
         asignaImagenALabel(lbfmColor, saliencyMap.get(1));
         asignaImagenALabel(lbSaliency, saliencyMap.get(2));
+
+        algTerminado = true;
     }
 
     private void bAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAbrirActionPerformed
@@ -1242,6 +1289,67 @@ public class JTrafficView extends FrameView {
     private void bLanzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLanzarActionPerformed
         lanzar();
     }//GEN-LAST:event_bLanzarActionPerformed
+
+    private void miPasoAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miPasoAnteriorActionPerformed
+        pasoAnterior();
+    }//GEN-LAST:event_miPasoAnteriorActionPerformed
+
+    private void miPasoSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miPasoSiguienteActionPerformed
+        pasoSiguiente();
+    }//GEN-LAST:event_miPasoSiguienteActionPerformed
+
+    private void bBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBackActionPerformed
+        pasoAnterior();
+    }//GEN-LAST:event_bBackActionPerformed
+
+    private void bNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bNextActionPerformed
+        pasoSiguiente();
+    }//GEN-LAST:event_bNextActionPerformed
+
+    private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged
+        actualizarBotonesEjecucion();
+    }//GEN-LAST:event_jTabbedPane1StateChanged
+
+    private void pasoSiguiente(){
+        if(!algTerminado)
+            lanzar();
+
+        int pasoActual = jTabbedPane1.getSelectedIndex();
+        if(pasoActual < 7){
+            pasoActual ++;
+            jTabbedPane1.setSelectedIndex(pasoActual);
+        }
+    }
+
+    private void pasoAnterior(){
+        int pasoActual = jTabbedPane1.getSelectedIndex();
+        if(pasoActual > 0){
+            pasoActual --;
+            jTabbedPane1.setSelectedIndex(pasoActual);
+        }
+    }
+
+    private void actualizarBotonesEjecucion(){
+        if(algTerminado){
+            int pasoActual = jTabbedPane1.getSelectedIndex();
+            if(pasoActual <= 0){
+                bBack.setEnabled(false);
+                miPasoAnterior.setEnabled(false);
+                bNext.setEnabled(true);
+                miPasoSiguiente.setEnabled(true);
+            }else if(pasoActual < 7){
+                bBack.setEnabled(true);
+                miPasoAnterior.setEnabled(true);
+                bNext.setEnabled(true);
+                miPasoSiguiente.setEnabled(true);
+            }else{
+                bBack.setEnabled(true);
+                miPasoAnterior.setEnabled(true);
+                bNext.setEnabled(false);
+                miPasoSiguiente.setEnabled(false);
+            }
+        }
+    }
 
     private void asignaImagenALabel(JLabel label, BufferedImage imagen){
         Image aux = imagen.getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_DEFAULT);

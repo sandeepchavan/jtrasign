@@ -54,26 +54,35 @@
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" resourceKey="bBack.icon"/>
                 <Property name="text" type="java.lang.String" resourceKey="bBack.text"/>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="focusable" type="boolean" value="false"/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="name" type="java.lang.String" value="bBack" noResource="true"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bBackActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="bNext">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" resourceKey="bNext.icon"/>
                 <Property name="text" type="java.lang.String" resourceKey="bNext.text"/>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="focusable" type="boolean" value="false"/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="name" type="java.lang.String" value="bNext" noResource="true"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bNextActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="bLanzar">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" resourceKey="bLanzar.icon"/>
                 <Property name="text" type="java.lang.String" resourceKey="bLanzar.text"/>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="focusable" type="boolean" value="false"/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="name" type="java.lang.String" value="bLanzar" noResource="true"/>
@@ -89,6 +98,9 @@
           <Properties>
             <Property name="name" type="java.lang.String" value="jTabbedPane1" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jTabbedPane1StateChanged"/>
+          </Events>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
           <SubComponents>
@@ -309,6 +321,7 @@
             </Container>
             <Container class="javax.swing.JScrollPane" name="spPaso2">
               <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="name" type="java.lang.String" value="spPaso2" noResource="true"/>
               </Properties>
               <Constraints>
@@ -406,6 +419,7 @@
             </Container>
             <Container class="javax.swing.JScrollPane" name="spPaso3">
               <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="name" type="java.lang.String" value="spPaso3" noResource="true"/>
               </Properties>
               <Constraints>
@@ -796,6 +810,7 @@
             </Container>
             <Container class="javax.swing.JScrollPane" name="spPaso4">
               <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="name" type="java.lang.String" value="spPaso4" noResource="true"/>
               </Properties>
               <Constraints>
@@ -1106,6 +1121,7 @@
             </Container>
             <Container class="javax.swing.JScrollPane" name="spPaso5">
               <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="name" type="java.lang.String" value="spPaso5" noResource="true"/>
               </Properties>
               <Constraints>
@@ -1201,6 +1217,7 @@
             </Container>
             <Container class="javax.swing.JScrollPane" name="spPaso6">
               <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="name" type="java.lang.String" value="spPaso6" noResource="true"/>
               </Properties>
               <Constraints>
@@ -1263,6 +1280,7 @@
             </Container>
             <Container class="javax.swing.JScrollPane" name="spResultados">
               <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="name" type="java.lang.String" value="spResultados" noResource="true"/>
               </Properties>
               <Constraints>
@@ -1340,8 +1358,12 @@
                   <KeyStroke key="F5"/>
                 </Property>
                 <Property name="text" type="java.lang.String" resourceKey="miPasoAnterior.text"/>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="name" type="java.lang.String" value="miPasoAnterior" noResource="true"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="miPasoAnteriorActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="miPasoSiguiente">
               <Properties>
@@ -1349,8 +1371,12 @@
                   <KeyStroke key="F6"/>
                 </Property>
                 <Property name="text" type="java.lang.String" resourceKey="miPasoSiguiente.text"/>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="name" type="java.lang.String" value="miPasoSiguiente" noResource="true"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="miPasoSiguienteActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="miLanzar">
               <Properties>
@@ -1358,6 +1384,7 @@
                   <KeyStroke key="F7"/>
                 </Property>
                 <Property name="text" type="java.lang.String" resourceKey="miLanzar.text"/>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="name" type="java.lang.String" value="miLanzar" noResource="true"/>
               </Properties>
               <Events>
