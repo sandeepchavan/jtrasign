@@ -139,7 +139,7 @@ public class OperacionesImagenes {
         BufferedImage res = new BufferedImage(640, 480, c.getType());
         WritableRaster wr = res.getRaster();
 
-        System.out.println("Nivel c: " + nC + ", nivel s: " + nS);
+        //System.out.println("Nivel c: " + nC + ", nivel s: " + nS);
 
         Raster rc = c.getData();
         Raster rs = s.getData();

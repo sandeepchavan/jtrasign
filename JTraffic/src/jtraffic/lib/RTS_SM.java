@@ -8,6 +8,7 @@ package jtraffic.lib;
 import java.awt.image.BufferedImage;
 import java.awt.image.Raster;
 import java.awt.image.WritableRaster;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -17,14 +18,18 @@ import java.util.List;
  */
 public class RTS_SM {
 
-    public static BufferedImage construirRTS_SM(List<BufferedImage> edges, List<BufferedImage> rg, List<BufferedImage> by, float pesoEdge, float pesoColor){
-        BufferedImage res = null;
+    public static List<BufferedImage> construirRTS_SM(List<BufferedImage> edges, List<BufferedImage> rg, List<BufferedImage> by, float pesoEdge, float pesoColor){
+        List<BufferedImage> res = new LinkedList<BufferedImage>();
 
         BufferedImage edge = OperacionesImagenes.sumaImagenes(edges);
         List<BufferedImage> colors = OperacionesImagenes.sumaImagenesPorParejas(by, rg);
         BufferedImage color = OperacionesImagenes.sumaImagenes(colors);
 
-        res = construir(edge, color, pesoEdge, pesoColor);
+        //Devuelve una lista con el "Edge Feature Map", el "Color Feature Map" y el "Saliency Map"
+        res.add(edge);
+        res.add(color);
+        BufferedImage saliency = construir(edge, color, pesoEdge, pesoColor);
+        res.add(saliency);
 
         return res;
     }
