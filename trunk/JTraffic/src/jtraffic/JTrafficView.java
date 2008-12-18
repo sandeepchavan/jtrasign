@@ -225,6 +225,8 @@ public class JTrafficView extends FrameView {
         miAbrir = new javax.swing.JMenuItem();
         javax.swing.JMenuItem exitMenuItem = new javax.swing.JMenuItem();
         exMenu = new javax.swing.JMenu();
+        miPasoAnterior = new javax.swing.JMenuItem();
+        miPasoSiguiente = new javax.swing.JMenuItem();
         miLanzar = new javax.swing.JMenuItem();
         javax.swing.JMenu helpMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem aboutMenuItem = new javax.swing.JMenuItem();
@@ -247,6 +249,11 @@ public class JTrafficView extends FrameView {
         bAbrir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         bAbrir.setName("bAbrir"); // NOI18N
         bAbrir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        bAbrir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAbrirActionPerformed(evt);
+            }
+        });
         tbBarraHerr.add(bAbrir);
 
         bBack.setIcon(resourceMap.getIcon("bBack.icon")); // NOI18N
@@ -271,6 +278,11 @@ public class JTrafficView extends FrameView {
         bLanzar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         bLanzar.setName("bLanzar"); // NOI18N
         bLanzar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        bLanzar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bLanzarActionPerformed(evt);
+            }
+        });
         tbBarraHerr.add(bLanzar);
 
         jTabbedPane1.setName("jTabbedPane1"); // NOI18N
@@ -1016,6 +1028,7 @@ public class JTrafficView extends FrameView {
         fileMenu.setText(resourceMap.getString("fileMenu.text")); // NOI18N
         fileMenu.setName("fileMenu"); // NOI18N
 
+        miAbrir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
         miAbrir.setText(resourceMap.getString("miAbrir.text")); // NOI18N
         miAbrir.setName("miAbrir"); // NOI18N
         miAbrir.addActionListener(new java.awt.event.ActionListener() {
@@ -1041,6 +1054,17 @@ public class JTrafficView extends FrameView {
             }
         });
 
+        miPasoAnterior.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, 0));
+        miPasoAnterior.setText(resourceMap.getString("miPasoAnterior.text")); // NOI18N
+        miPasoAnterior.setName("miPasoAnterior"); // NOI18N
+        exMenu.add(miPasoAnterior);
+
+        miPasoSiguiente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F6, 0));
+        miPasoSiguiente.setText(resourceMap.getString("miPasoSiguiente.text")); // NOI18N
+        miPasoSiguiente.setName("miPasoSiguiente"); // NOI18N
+        exMenu.add(miPasoSiguiente);
+
+        miLanzar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F7, 0));
         miLanzar.setText(resourceMap.getString("miLanzar.text")); // NOI18N
         miLanzar.setName("miLanzar"); // NOI18N
         miLanzar.addActionListener(new java.awt.event.ActionListener() {
@@ -1056,6 +1080,7 @@ public class JTrafficView extends FrameView {
         helpMenu.setName("helpMenu"); // NOI18N
 
         aboutMenuItem.setAction(actionMap.get("showAboutBox")); // NOI18N
+        aboutMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
         aboutMenuItem.setName("aboutMenuItem"); // NOI18N
         helpMenu.add(aboutMenuItem);
 
@@ -1104,6 +1129,10 @@ public class JTrafficView extends FrameView {
     }// </editor-fold>//GEN-END:initComponents
 
     private void miAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miAbrirActionPerformed
+        abrir();
+    }//GEN-LAST:event_miAbrirActionPerformed
+
+    private void abrir(){
         JFileChooser abrirFichero = new JFileChooser();
         abrirFichero.showOpenDialog(this.getComponent());
         File fichero = abrirFichero.getSelectedFile();
@@ -1127,13 +1156,17 @@ public class JTrafficView extends FrameView {
                 Logger.getLogger(JTrafficView.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-    }//GEN-LAST:event_miAbrirActionPerformed
+    }
 
     private void exMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exMenuActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_exMenuActionPerformed
 
     private void miLanzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miLanzarActionPerformed
+        lanzar();
+    }//GEN-LAST:event_miLanzarActionPerformed
+
+    private void lanzar(){
         imagenesNormalizadas = ImagenesNormalizadas.construirRGBYE(imagenOriginal);
 
         //Pasos 1 y 2: Normalizacion de imagenes
@@ -1146,7 +1179,7 @@ public class JTrafficView extends FrameView {
         //Paso 3: Piramides Gaussianas
         //Piramide de Borde
         piramideEdge = PiramidesGaussianas.aplicar(imagenesNormalizadas[ImagenesNormalizadas.E],7);
-        
+
         asignaImagenALabel(lbPirE0, piramideEdge.get(0));
         asignaImagenALabel(lbPirE1, piramideEdge.get(1));
         asignaImagenALabel(lbPirE2, piramideEdge.get(2));
@@ -1156,7 +1189,7 @@ public class JTrafficView extends FrameView {
         asignaImagenALabel(lbPirE6, piramideEdge.get(6));
          //Piramide BY
         piramideBY = PiramidesGaussianas.aplicar(imagenesNormalizadas[ImagenesNormalizadas.BY],7);
-        
+
         asignaImagenALabel(lbPirBY0, piramideBY.get(0));
         asignaImagenALabel(lbPirBY1, piramideBY.get(1));
         asignaImagenALabel(lbPirBY2, piramideBY.get(2));
@@ -1200,7 +1233,15 @@ public class JTrafficView extends FrameView {
         asignaImagenALabel(lbfmEdge, saliencyMap.get(0));
         asignaImagenALabel(lbfmColor, saliencyMap.get(1));
         asignaImagenALabel(lbSaliency, saliencyMap.get(2));
-    }//GEN-LAST:event_miLanzarActionPerformed
+    }
+
+    private void bAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAbrirActionPerformed
+        abrir();
+    }//GEN-LAST:event_bAbrirActionPerformed
+
+    private void bLanzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLanzarActionPerformed
+        lanzar();
+    }//GEN-LAST:event_bLanzarActionPerformed
 
     private void asignaImagenALabel(JLabel label, BufferedImage imagen){
         Image aux = imagen.getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_DEFAULT);
@@ -1296,6 +1337,8 @@ public class JTrafficView extends FrameView {
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem miAbrir;
     private javax.swing.JMenuItem miLanzar;
+    private javax.swing.JMenuItem miPasoAnterior;
+    private javax.swing.JMenuItem miPasoSiguiente;
     private javax.swing.JPanel panelImagenOriginal;
     private javax.swing.JProgressBar progressBar;
     private javax.swing.JScrollPane spImagenOriginal;
