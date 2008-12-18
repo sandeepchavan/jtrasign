@@ -102,7 +102,7 @@ public class OperacionesImagenes {
     public static BufferedImage sumaImagenesNormalizadas(List<BufferedImage> imagenes){
         return null;
     }
-
+    /*
     public static BufferedImage restaImagenesConDifNiveles(BufferedImage a, int nivelA, BufferedImage b, int nivelB){
         BufferedImage res = new BufferedImage(WIDTH, HEIGHT, a.getType());
         WritableRaster wr = res.getRaster();
@@ -132,6 +132,38 @@ public class OperacionesImagenes {
                 wr.setPixel(x, y, new int[]{dif});
             }
         }
+
+        return res;
+    }*/
+    public static BufferedImage restaImagenesConDifNiveles(BufferedImage c, int nC, BufferedImage s, int nS){
+        BufferedImage res = new BufferedImage(640, 480, c.getType());
+        WritableRaster wr = res.getRaster();
+
+        Raster rc = c.getData();
+        Raster rs = s.getData();
+
+        int maxX = wr.getHeight();
+        int maxY = wr.getWidth();
+
+         for(int x = res.getMinX(); x < maxX; x++){
+            for(int y = res.getMinY(); y < maxY; y++){
+                int xS = (int) Math.floor(x / Math.pow(2.0, nS));
+                int yS = (int) Math.floor(y / Math.pow(2.0, nS));
+
+                int xC = (int) Math.floor(x / Math.pow(2.0, nC));
+                int yC = (int) Math.floor(y / Math.pow(2.0, nC));
+
+                int pixelC[] = null;
+                pixelC = rc.getPixel(yC , xC, pixelC);
+
+                int pixelS[] = null;
+                pixelS = rs.getPixel(yS , xS, pixelS);
+
+                int dif = Math.abs(pixelC[0] - pixelS[0]);
+
+                wr.setPixel(y, x, new int[]{dif});
+            }
+         }
 
         return res;
     }
