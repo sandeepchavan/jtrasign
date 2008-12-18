@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class OperacionesImagenes {
     public static final int WIDTH = 640;
-    public static final int HEIGHT = 640;
+    public static final int HEIGHT = 480;
 
     public static BufferedImage sumaImagenes(BufferedImage a, BufferedImage b){
         BufferedImage res = new BufferedImage(a.getWidth(), a.getHeight(), BufferedImage.TYPE_BYTE_GRAY);
@@ -106,7 +106,7 @@ public class OperacionesImagenes {
     public static BufferedImage restaImagenesConDifNiveles(BufferedImage a, int nivelA, BufferedImage b, int nivelB){
         BufferedImage res = new BufferedImage(WIDTH, HEIGHT, a.getType());
         WritableRaster wr = res.getRaster();
-
+        System.out.println("nivel a:"+ nivelA + ", nivel b:" + nivelB);
         Raster rA = a.getData();
         Raster rB = b.getData();
 
