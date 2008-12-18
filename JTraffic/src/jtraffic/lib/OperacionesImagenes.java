@@ -125,7 +125,7 @@ public class OperacionesImagenes {
                 pixelA = rA.getPixel(xA , yA, pixelA);
 
                 int pixelB[] = null;
-                pixelB = rB.getPixel(xA , yA, pixelB);
+                pixelB = rB.getPixel(xB , yB, pixelB);
 
                 int dif = Math.abs(pixelA[0] - pixelB[0]);
 
