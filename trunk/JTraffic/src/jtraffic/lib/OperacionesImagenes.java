@@ -100,7 +100,40 @@ public class OperacionesImagenes {
     }
 
     public static BufferedImage sumaImagenesNormalizadas(List<BufferedImage> imagenes){
-        return null;
+        if(imagenes == null || imagenes.size() == 0)
+            return null;
+
+        int rangoMaxNorm = (int) Math.floor(255 / ((float)imagenes.size()));
+
+        BufferedImage res = new BufferedImage(640, 480, BufferedImage.TYPE_BYTE_GRAY);
+        WritableRaster wres = res.getRaster();
+
+        int maxY = wres.getHeight();
+        int maxX = wres.getWidth();
+
+        Iterator<BufferedImage> it = imagenes.iterator();
+        while(it.hasNext()){
+            //BufferedImage aux = Normalizar.aplicar(it.next(), 0, 255/lista.size());
+            //BufferedImage aux = Normalizar.normalizacionCompleta(it.next());
+            BufferedImage aux = Normalizacion.normalizar(it.next(), 0, rangoMaxNorm);
+            Raster r = aux.getData();
+
+            for(int x = res.getMinX(); x < maxX; x++){
+                for(int y = res.getMinY(); y < maxY; y++){
+                    //Pixel acumulado
+                    int pixelA[] = null;
+                    pixelA = wres.getPixel(x , y, pixelA);
+                    //Pixel nuevo
+                    int pixel[] = null;
+                    pixel = r.getPixel(x , y, pixel);
+
+                    int nuevo = pixelA[0] + pixel[0];
+                    wres.setPixel(x, y, new int[]{nuevo});
+                }
+            }
+        }
+
+        return res;
     }
     /*
     public static BufferedImage restaImagenesConDifNiveles(BufferedImage a, int nivelA, BufferedImage b, int nivelB){

@@ -13,11 +13,13 @@ import org.jdesktop.application.Action;
 import org.jdesktop.application.ResourceMap;
 import org.jdesktop.application.SingleFrameApplication;
 import org.jdesktop.application.FrameView;
+import org.jdesktop.application.TaskEvent;
 import org.jdesktop.application.TaskMonitor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.Iterator;
 import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.Timer;
@@ -30,8 +32,12 @@ import javax.swing.JLabel;
 import jtraffic.gui.events.MouseListenerImagenesLabel;
 import jtraffic.lib.CSD;
 import jtraffic.lib.ImagenesNormalizadas;
+import jtraffic.lib.MaximosLocales;
 import jtraffic.lib.PiramidesGaussianas;
+import jtraffic.lib.Posicion;
 import jtraffic.lib.RTS_SM;
+import org.jdesktop.application.Task;
+import org.jdesktop.application.TaskListener;
 
 /**
  * The application's main frame.
@@ -47,6 +53,7 @@ public class JTrafficView extends FrameView {
     private List<BufferedImage> csdRG;
     private List<BufferedImage> csdBY;
     private List<BufferedImage> saliencyMap;
+    private BufferedImage resultado;
 
     private boolean algTerminado = false;
 
@@ -222,6 +229,9 @@ public class JTrafficView extends FrameView {
         lbSaliency = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         spResultados = new javax.swing.JScrollPane();
+        jPanel6 = new javax.swing.JPanel();
+        lbResultado = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         javax.swing.JMenu fileMenu = new javax.swing.JMenu();
         miAbrir = new javax.swing.JMenuItem();
@@ -1030,6 +1040,39 @@ public class JTrafficView extends FrameView {
 
         spResultados.setEnabled(false);
         spResultados.setName("spResultados"); // NOI18N
+
+        jPanel6.setName("jPanel6"); // NOI18N
+
+        lbResultado.setText(resourceMap.getString("lbResultado.text")); // NOI18N
+        lbResultado.setName("lbResultado"); // NOI18N
+
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel17.setText(resourceMap.getString("jLabel17.text")); // NOI18N
+        jLabel17.setName("jLabel17"); // NOI18N
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbResultado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 815, Short.MAX_VALUE)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 815, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbResultado, javax.swing.GroupLayout.DEFAULT_SIZE, 541, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel17)
+                .addContainerGap())
+        );
+
+        spResultados.setViewportView(jPanel6);
+
         jTabbedPane1.addTab(resourceMap.getString("spResultados.TabConstraints.tabTitle"), spResultados); // NOI18N
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
@@ -1119,7 +1162,6 @@ public class JTrafficView extends FrameView {
         helpMenu.setName("helpMenu"); // NOI18N
 
         aboutMenuItem.setAction(actionMap.get("showAboutBox")); // NOI18N
-        aboutMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
         aboutMenuItem.setName("aboutMenuItem"); // NOI18N
         helpMenu.add(aboutMenuItem);
 
@@ -1212,7 +1254,22 @@ public class JTrafficView extends FrameView {
     }//GEN-LAST:event_miLanzarActionPerformed
 
     private void lanzar(){
+        TaskMonitor taskMonitor = new TaskMonitor(getApplication().getContext());
+        final Task t = new Task(this.getApplication()) {
+
+            @Override
+            protected Object doInBackground() throws Exception {
+                mi_lanzar();
+                return null;
+            }
+        };
+
+        t.execute();
+    }
+
+    private void mi_lanzar(){
         imagenesNormalizadas = ImagenesNormalizadas.construirRGBYE(imagenOriginal);
+        System.out.println("Imágenes normalizadas.");
 
         //Pasos 1 y 2: Normalizacion de imagenes
         asignaImagenALabel(lbR, imagenesNormalizadas[ImagenesNormalizadas.R]);
@@ -1224,6 +1281,7 @@ public class JTrafficView extends FrameView {
         //Paso 3: Piramides Gaussianas
         //Piramide de Borde
         piramideEdge = PiramidesGaussianas.aplicar(imagenesNormalizadas[ImagenesNormalizadas.E],7);
+        System.out.println("Pirámides Gaussianas construidas.");
 
         asignaImagenALabel(lbPirE0, piramideEdge.get(0));
         asignaImagenALabel(lbPirE1, piramideEdge.get(1));
@@ -1256,18 +1314,21 @@ public class JTrafficView extends FrameView {
         //Paso 4: CSD Map
         //Mapa CSD de Borde
         csdBorde = CSD.aplicar(piramideEdge);
+        System.out.println("CSD borde construido");
         asignaImagenALabel(lbcsdE0, csdBorde.get(0));
         asignaImagenALabel(lbcsdE1, csdBorde.get(1));
         asignaImagenALabel(lbcsdE2, csdBorde.get(2));
-        asignaImagenALabel(lbcsdE3, csdBorde.get(3));
+      asignaImagenALabel(lbcsdE3, csdBorde.get(3));
         //Mapa CSD de RG
         csdRG = CSD.aplicar(piramideRG);
+        System.out.println("CSD RG construido");
         asignaImagenALabel(lbcsdRG0, csdRG.get(0));
         asignaImagenALabel(lbcsdRG1, csdRG.get(1));
         asignaImagenALabel(lbcsdRG2, csdRG.get(2));
         asignaImagenALabel(lbcsdRG3, csdRG.get(3));
         //Mapa CSD de BY
         csdBY = CSD.aplicar(piramideBY);
+        System.out.println("CSD BY construido");
         asignaImagenALabel(lbcsdBY0, csdBY.get(0));
         asignaImagenALabel(lbcsdBY1, csdBY.get(1));
         asignaImagenALabel(lbcsdBY2, csdBY.get(2));
@@ -1275,9 +1336,31 @@ public class JTrafficView extends FrameView {
 
         //Paso 6: Mapa de Prominecias (RTS_SM)
         saliencyMap = RTS_SM.construirRTS_SM(csdBorde, csdRG, csdBY, 0.5f, 0.5f);
+        System.out.println("RTS_SM construido.");
         asignaImagenALabel(lbfmEdge, saliencyMap.get(0));
         asignaImagenALabel(lbfmColor, saliencyMap.get(1));
         asignaImagenALabel(lbSaliency, saliencyMap.get(2));
+
+        
+        List<Posicion> candidatos = MaximosLocales.aplicarPorEntropia(saliencyMap.get(2), 40);
+        System.out.println("Máximos locales calculados.");
+        Iterator<Posicion> it = candidatos.iterator();
+        /*
+        while(it.hasNext()){
+            System.out.println("Posición: " + it.next());
+        }
+         */
+
+        resultado = new BufferedImage(640, 480, BufferedImage.TYPE_INT_RGB);
+        Graphics2D g = resultado.createGraphics();
+        g.drawImage(saliencyMap.get(2), 0, 0, resultado.getWidth(), resultado.getHeight(), null);
+        it = candidatos.iterator();
+        while(it.hasNext()){
+            Posicion pos = it.next();
+            g.drawOval(pos.x, pos.y, 5, 5);
+        }
+
+        asignaImagenALabel(lbResultado, resultado);
 
         algTerminado = true;
     }
@@ -1370,6 +1453,7 @@ public class JTrafficView extends FrameView {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1387,6 +1471,7 @@ public class JTrafficView extends FrameView {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
@@ -1424,6 +1509,7 @@ public class JTrafficView extends FrameView {
     private javax.swing.JLabel lbPirRG6;
     private javax.swing.JLabel lbR;
     private javax.swing.JLabel lbRG_BY;
+    private javax.swing.JLabel lbResultado;
     private javax.swing.JLabel lbSaliency;
     private javax.swing.JLabel lbTextoImagenOriginal;
     private javax.swing.JLabel lbY;
