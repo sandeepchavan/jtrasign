@@ -22,7 +22,7 @@ public class FiltroGaussiano {
         BufferedImage res = null;
         float kernel[][]= generateKernel(theta, size);
 
-        res = Convolucion.aplicar(kernel, imagen, Convolucion.SIN_BORDES);
+        res = Convolucion.aplicar(kernel, imagen, Convolucion.BORDES_0);
 
         return res;
     }

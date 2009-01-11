@@ -35,7 +35,7 @@ public class RTS_SM {
     }
 
     private static BufferedImage construir(BufferedImage edge, BufferedImage color, float pesoEdge, float pesoColor){
-        BufferedImage res = new BufferedImage(edge.getWidth(), edge.getHeight(), BufferedImage.TYPE_BYTE_GRAY);
+        BufferedImage res = new BufferedImage(edge.getWidth(), edge.getHeight(), edge.getType());
         WritableRaster wres = res.getRaster();
 
         Raster rA = edge.getData();

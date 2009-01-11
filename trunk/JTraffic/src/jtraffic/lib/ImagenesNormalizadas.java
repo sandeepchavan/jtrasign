@@ -49,13 +49,13 @@ public class ImagenesNormalizadas {
 
         Raster rasterO = imagen.getData();
 
-        maxX = rasterO.getHeight();
-        maxY = rasterO.getWidth();
+        maxX = rasterO.getWidth();
+        maxY = rasterO.getHeight();
 
          for(int x = rasterO.getMinX(); x < maxX; x++){
             for(int y = rasterO.getMinY(); y < maxY; y++){
                 int pixel[] = null;
-                pixel = rasterO.getPixel(y , x, pixel);
+                pixel = rasterO.getPixel(x , y, pixel);
 
                 int red = pixel[0];
                 int green = pixel[1];
@@ -79,13 +79,13 @@ public class ImagenesNormalizadas {
 
                 int pRg_by = Math.abs(Math.abs(nRed - nGreen) - Math.abs(nBlue - nYellow));
 
-                rasterR.setPixel(y, x, new int[]{nRed});
-                rasterG.setPixel(y, x, new int[]{nGreen});
-                rasterB.setPixel(y, x, new int[]{nBlue});
-                rasterY.setPixel(y, x, new int[]{nYellow});
-                rasterRg_by.setPixel(y, x, new int[]{pRg_by});
-                rasterRg.setPixel(y, x, new int[]{(Math.abs(nRed - nGreen))});
-                rasterBy.setPixel(y, x, new int[]{(Math.abs(nBlue - nYellow))});
+                rasterR.setPixel(x, y, new int[]{nRed});
+                rasterG.setPixel(x, y, new int[]{nGreen});
+                rasterB.setPixel(x, y, new int[]{nBlue});
+                rasterY.setPixel(x, y, new int[]{nYellow});
+                rasterRg_by.setPixel(x, y, new int[]{pRg_by});
+                rasterRg.setPixel(x, y, new int[]{(Math.abs(nRed - nGreen))});
+                rasterBy.setPixel(x, y, new int[]{(Math.abs(nBlue - nYellow))});
             }
          }
 
@@ -109,17 +109,17 @@ public class ImagenesNormalizadas {
                 int pixel[] = null;
                 int pixelSx[] = null;
                 int pixelSy[] = null;
-                pixel = rasterRg_by.getPixel(y , x, pixel);
+                pixel = rasterRg_by.getPixel(x , y, pixel);
 
-                pixelSx = rasterSX.getPixel(y , x, pixelSx);
-                pixelSy = rasterSY.getPixel(y, x, pixelSy);
+                pixelSx = rasterSX.getPixel(x , y, pixelSx);
+                pixelSy = rasterSY.getPixel(x, y, pixelSy);
 
                 int psobel = Math.abs(pixelSx[0]) + Math.abs(pixelSy[0]);
-                rasterSobel.setPixel(y, x, new int[]{psobel});
+                rasterSobel.setPixel(x, y, new int[]{psobel});
 
                 int nuevop = (int)Math.sqrt((pixel[0] * pixelSx[0])^2 + (pixel[0] * pixelSy[0])^2);
 
-                rasterEdge.setPixel(y, x, new int[]{nuevop});
+                rasterEdge.setPixel(x, y, new int[]{nuevop});
             }
         }
 

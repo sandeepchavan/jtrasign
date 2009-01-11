@@ -5,6 +5,7 @@
 
 package jtraffic.lib;
 
+import jtraffic.algoritmo.Posicion;
 import java.awt.image.BufferedImage;
 import java.awt.image.Raster;
 import java.util.LinkedList;
@@ -76,14 +77,14 @@ public class MaximosLocales {
 
                 //Si es máximo local lo añadimos como tal en los resultados
                 if(esMax)
-                    res.add(new Posicion(i + mitad, j + mitad));
+                    res.add(new Posicion(i + mitad, j + mitad, aux));
             }
         }
 
         return res;
     }
 
-    public static List<Posicion> aplicarPorEntropia(BufferedImage imagen, int dim){
+    public static List<Posicion> aplicarPorEntropia(BufferedImage imagen, int dim, double umbral){
         if(imagen.getType() != BufferedImage.TYPE_BYTE_GRAY)
             throw new IllegalArgumentException("Solo se permite imagenes en escala de grises.");
 
@@ -112,7 +113,7 @@ public class MaximosLocales {
             for(int j = 0; j < matriz[i].length; j++){
                 double aux = matriz[i][j];
                 //System.out.print(aux + ",");
-                if(aux > 6){
+                if(aux > umbral){
                     boolean esMax = true;
                     //Fila superior
                     if(i > 0){
@@ -148,7 +149,7 @@ public class MaximosLocales {
 
                     //Si es máximo local lo añadimos como tal en los resultados
                     if(esMax)
-                        res.add(new Posicion(i + mitad, j + mitad));
+                        res.add(new Posicion(i + mitad, j + mitad, aux));
                 }
             }
         }
