@@ -5,6 +5,7 @@
 
 package jtraffic.lib;
 
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.awt.image.Raster;
 import java.awt.image.WritableRaster;
@@ -18,11 +19,8 @@ import java.util.List;
  * @author DavidSAC
  */
 public class OperacionesImagenes {
-    public static final int WIDTH = 640;
-    public static final int HEIGHT = 480;
-
     public static BufferedImage sumaImagenes(BufferedImage a, BufferedImage b){
-        BufferedImage res = new BufferedImage(a.getWidth(), a.getHeight(), BufferedImage.TYPE_BYTE_GRAY);
+        BufferedImage res = new BufferedImage(a.getWidth(), a.getHeight(), a.getType());
         WritableRaster wres = res.getRaster();
 
         Raster rA = a.getData();
@@ -168,8 +166,19 @@ public class OperacionesImagenes {
 
         return res;
     }*/
-    public static BufferedImage restaImagenesConDifNiveles(BufferedImage c, int nC, BufferedImage s, int nS){
-        BufferedImage res = new BufferedImage(640, 480, c.getType());
+
+    public static BufferedImage redimensionar(BufferedImage imagen, int width, int height){
+        BufferedImage redimensionada = new BufferedImage(width, height, imagen.getType());
+        Graphics2D g = redimensionada.createGraphics();
+
+        g.drawImage(imagen, 0, 0, redimensionada.getWidth() + 2, redimensionada.getHeight()+ 2, null);
+        g.dispose();
+
+        return redimensionada;
+    }
+
+    public static BufferedImage restaImagenesConDifNiveles(BufferedImage c, int nC, BufferedImage s, int nS, int width, int heigth){
+        BufferedImage res = new BufferedImage(width, heigth, c.getType());
         WritableRaster wr = res.getRaster();
 
         //System.out.println("Nivel c: " + nC + ", nivel s: " + nS);
@@ -177,8 +186,8 @@ public class OperacionesImagenes {
         Raster rc = c.getData();
         Raster rs = s.getData();
 
-        int maxX = wr.getHeight();
-        int maxY = wr.getWidth();
+        int maxX = wr.getWidth();
+        int maxY = wr.getHeight();
 
          for(int x = res.getMinX(); x < maxX; x++){
             for(int y = res.getMinY(); y < maxY; y++){
@@ -189,14 +198,14 @@ public class OperacionesImagenes {
                 int yC = (int) Math.floor(y / Math.pow(2.0, nC));
 
                 int pixelC[] = null;
-                pixelC = rc.getPixel(yC , xC, pixelC);
-                //System.out.println("Accediendo a la posicion: (" + yS + "," + xS + ")");
+                pixelC = rc.getPixel(xC , yC, pixelC);
+                
                 int pixelS[] = null;
-                pixelS = rs.getPixel(yS , xS, pixelS);
+                pixelS = rs.getPixel(xS , yS, pixelS);
 
                 int dif = Math.abs(pixelC[0] - pixelS[0]);
 
-                wr.setPixel(y, x, new int[]{dif});
+                wr.setPixel(x, y, new int[]{dif});
             }
          }
 

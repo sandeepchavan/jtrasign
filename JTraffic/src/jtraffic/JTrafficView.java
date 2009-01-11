@@ -13,7 +13,6 @@ import org.jdesktop.application.Action;
 import org.jdesktop.application.ResourceMap;
 import org.jdesktop.application.SingleFrameApplication;
 import org.jdesktop.application.FrameView;
-import org.jdesktop.application.TaskEvent;
 import org.jdesktop.application.TaskMonitor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -29,31 +28,20 @@ import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import jtraffic.algoritmo.Algoritmo;
+import jtraffic.algoritmo.ConfigAlgoritmo;
 import jtraffic.gui.events.MouseListenerImagenesLabel;
-import jtraffic.lib.CSD;
-import jtraffic.lib.ImagenesNormalizadas;
-import jtraffic.lib.MaximosLocales;
-import jtraffic.lib.PiramidesGaussianas;
-import jtraffic.lib.Posicion;
-import jtraffic.lib.RTS_SM;
+import jtraffic.algoritmo.Posicion;
 import org.jdesktop.application.Task;
-import org.jdesktop.application.TaskListener;
 
 /**
  * The application's main frame.
  */
 public class JTrafficView extends FrameView {
-
-    private BufferedImage imagenOriginal;
-    private BufferedImage imagenesNormalizadas[];
-    private List<BufferedImage> piramideEdge;
-    private List<BufferedImage> piramideRG;
-    private List<BufferedImage> piramideBY;
-    private List<BufferedImage> csdBorde;
-    private List<BufferedImage> csdRG;
-    private List<BufferedImage> csdBY;
-    private List<BufferedImage> saliencyMap;
+    private BufferedImage original;
     private BufferedImage resultado;
+    private Algoritmo algoritmo;
+    private ConfigAlgoritmo configAlg = new ConfigAlgoritmo();
 
     private boolean algTerminado = false;
 
@@ -1220,17 +1208,11 @@ public class JTrafficView extends FrameView {
 
         if(fichero != null){
             try{
-                imagenOriginal = ImageIO.read(fichero);
+                original = ImageIO.read(fichero);
 
-                BufferedImage aux2 = new BufferedImage(640, 480, imagenOriginal.getType());
-                Graphics2D g = aux2.createGraphics();
+                algoritmo = new Algoritmo(original, configAlg);
 
-                g.drawImage(imagenOriginal, 0, 0, aux2.getWidth() + 2, aux2.getHeight()+ 2, null);
-                g.dispose();
-
-                imagenOriginal = aux2;
-
-                asignaImagenALabel(lbImagenOriginal, imagenOriginal);
+                asignaImagenALabel(lbImagenOriginal, algoritmo.getImagen(Algoritmo.ORIGINAL));
 
                 jTabbedPane1.setSelectedIndex(0);
                 miPasoAnterior.setEnabled(false);
@@ -1254,6 +1236,7 @@ public class JTrafficView extends FrameView {
     }//GEN-LAST:event_miLanzarActionPerformed
 
     private void lanzar(){
+        /*
         TaskMonitor taskMonitor = new TaskMonitor(getApplication().getContext());
         final Task t = new Task(this.getApplication()) {
 
@@ -1265,23 +1248,37 @@ public class JTrafficView extends FrameView {
         };
 
         t.execute();
+         */
+        mi_lanzar();
     }
 
-    private void mi_lanzar(){
-        imagenesNormalizadas = ImagenesNormalizadas.construirRGBYE(imagenOriginal);
-        System.out.println("Imágenes normalizadas.");
+    private void paso0(){
+        algoritmo.paso0();
+    }
 
-        //Pasos 1 y 2: Normalizacion de imagenes
-        asignaImagenALabel(lbR, imagenesNormalizadas[ImagenesNormalizadas.R]);
-        asignaImagenALabel(lbG, imagenesNormalizadas[ImagenesNormalizadas.G]);
-        asignaImagenALabel(lbB, imagenesNormalizadas[ImagenesNormalizadas.B]);
-        asignaImagenALabel(lbY, imagenesNormalizadas[ImagenesNormalizadas.Y]);
-        asignaImagenALabel(lbRG_BY, imagenesNormalizadas[ImagenesNormalizadas.RG_BY]);
-        asignaImagenALabel(lbE, imagenesNormalizadas[ImagenesNormalizadas.E]);
-        //Paso 3: Piramides Gaussianas
-        //Piramide de Borde
-        piramideEdge = PiramidesGaussianas.aplicar(imagenesNormalizadas[ImagenesNormalizadas.E],7);
-        System.out.println("Pirámides Gaussianas construidas.");
+    private void paso1(){
+        algoritmo.paso1();
+        asignaImagenALabel(lbR, algoritmo.getImagen(Algoritmo.NORM_R));
+        asignaImagenALabel(lbG, algoritmo.getImagen(Algoritmo.NORM_R));
+        asignaImagenALabel(lbB, algoritmo.getImagen(Algoritmo.NORM_R));
+        asignaImagenALabel(lbY, algoritmo.getImagen(Algoritmo.NORM_R));
+    }
+
+    private void paso2(){
+        algoritmo.paso2();
+        asignaImagenALabel(lbRG_BY, algoritmo.getImagen(Algoritmo.NORM_R));
+        asignaImagenALabel(lbE, algoritmo.getImagen(Algoritmo.NORM_R));
+    }
+
+    private void paso3(){
+        algoritmo.paso3();
+
+        List<BufferedImage> piramideEdge = algoritmo.getPiramideEdge();
+        System.out.println("Pirámide Edge construida.");
+        List<BufferedImage> piramideRG = algoritmo.getPiramideRG();
+        System.out.println("Pirámide RG construida.");
+        List<BufferedImage> piramideBY = algoritmo.getPiramideBY();
+        System.out.println("Pirámide BY construida.");
 
         asignaImagenALabel(lbPirE0, piramideEdge.get(0));
         asignaImagenALabel(lbPirE1, piramideEdge.get(1));
@@ -1290,8 +1287,6 @@ public class JTrafficView extends FrameView {
         asignaImagenALabel(lbPirE4, piramideEdge.get(4));
         asignaImagenALabel(lbPirE5, piramideEdge.get(5));
         asignaImagenALabel(lbPirE6, piramideEdge.get(6));
-         //Piramide BY
-        piramideBY = PiramidesGaussianas.aplicar(imagenesNormalizadas[ImagenesNormalizadas.BY],7);
 
         asignaImagenALabel(lbPirBY0, piramideBY.get(0));
         asignaImagenALabel(lbPirBY1, piramideBY.get(1));
@@ -1300,8 +1295,6 @@ public class JTrafficView extends FrameView {
         asignaImagenALabel(lbPirBY4, piramideBY.get(4));
         asignaImagenALabel(lbPirBY5, piramideBY.get(5));
         asignaImagenALabel(lbPirBY6, piramideBY.get(6));
-        //Piramide RG
-        piramideRG = PiramidesGaussianas.aplicar(imagenesNormalizadas[ImagenesNormalizadas.RG],7);
 
         asignaImagenALabel(lbPirRG0, piramideRG.get(0));
         asignaImagenALabel(lbPirRG1, piramideRG.get(1));
@@ -1310,59 +1303,79 @@ public class JTrafficView extends FrameView {
         asignaImagenALabel(lbPirRG4, piramideRG.get(4));
         asignaImagenALabel(lbPirRG5, piramideRG.get(5));
         asignaImagenALabel(lbPirRG6, piramideRG.get(6));
+    }
 
-        //Paso 4: CSD Map
+    private void paso4(){
+        algoritmo.paso4();
         //Mapa CSD de Borde
-        csdBorde = CSD.aplicar(piramideEdge);
+        List<BufferedImage> csdBorde = algoritmo.getCsdBorde();
         System.out.println("CSD borde construido");
         asignaImagenALabel(lbcsdE0, csdBorde.get(0));
         asignaImagenALabel(lbcsdE1, csdBorde.get(1));
         asignaImagenALabel(lbcsdE2, csdBorde.get(2));
-      asignaImagenALabel(lbcsdE3, csdBorde.get(3));
+        asignaImagenALabel(lbcsdE3, csdBorde.get(3));
+
         //Mapa CSD de RG
-        csdRG = CSD.aplicar(piramideRG);
+        List<BufferedImage> csdRG = algoritmo.getCsdRG();
         System.out.println("CSD RG construido");
         asignaImagenALabel(lbcsdRG0, csdRG.get(0));
         asignaImagenALabel(lbcsdRG1, csdRG.get(1));
         asignaImagenALabel(lbcsdRG2, csdRG.get(2));
         asignaImagenALabel(lbcsdRG3, csdRG.get(3));
+
         //Mapa CSD de BY
-        csdBY = CSD.aplicar(piramideBY);
+        List<BufferedImage> csdBY = algoritmo.getCsdBY();
         System.out.println("CSD BY construido");
         asignaImagenALabel(lbcsdBY0, csdBY.get(0));
         asignaImagenALabel(lbcsdBY1, csdBY.get(1));
         asignaImagenALabel(lbcsdBY2, csdBY.get(2));
         asignaImagenALabel(lbcsdBY3, csdBY.get(3));
+    }
 
-        //Paso 6: Mapa de Prominecias (RTS_SM)
-        saliencyMap = RTS_SM.construirRTS_SM(csdBorde, csdRG, csdBY, 0.5f, 0.5f);
+    private void paso5(){
+        algoritmo.paso5();
+        asignaImagenALabel(lbfmEdge, algoritmo.getImagen(Algoritmo.EDGE_MAP));
+        asignaImagenALabel(lbfmColor, algoritmo.getImagen(Algoritmo.COLOR_MAP));
+    }
+
+    private void paso6(){
         System.out.println("RTS_SM construido.");
-        asignaImagenALabel(lbfmEdge, saliencyMap.get(0));
-        asignaImagenALabel(lbfmColor, saliencyMap.get(1));
-        asignaImagenALabel(lbSaliency, saliencyMap.get(2));
+        asignaImagenALabel(lbSaliency, algoritmo.getImagen(Algoritmo.SALIENCY_MAP));
+    }
 
-        
-        List<Posicion> candidatos = MaximosLocales.aplicarPorEntropia(saliencyMap.get(2), 40);
+    private void paso7(){
+        algoritmo.paso7();
         System.out.println("Máximos locales calculados.");
-        Iterator<Posicion> it = candidatos.iterator();
-        /*
-        while(it.hasNext()){
-            System.out.println("Posición: " + it.next());
-        }
-         */
 
+        List<Posicion> candidatos = algoritmo.getCandidatos();
+
+        Iterator<Posicion> it = candidatos.iterator();
+        
         resultado = new BufferedImage(640, 480, BufferedImage.TYPE_INT_RGB);
+
         Graphics2D g = resultado.createGraphics();
-        g.drawImage(saliencyMap.get(2), 0, 0, resultado.getWidth(), resultado.getHeight(), null);
+        g.drawImage(algoritmo.getImagen(Algoritmo.SALIENCY_MAP), 0, 0, resultado.getWidth(), resultado.getHeight(), null);
         it = candidatos.iterator();
         while(it.hasNext()){
             Posicion pos = it.next();
+            System.out.println("Posicion: " + pos);
             g.drawOval(pos.x, pos.y, 5, 5);
         }
 
         asignaImagenALabel(lbResultado, resultado);
 
         algTerminado = true;
+    }
+
+    private void mi_lanzar(){
+        paso0();
+        paso1();
+        paso2();
+        paso3();
+        paso4();
+        paso5();
+        paso6();
+        paso7();
     }
 
     private void bAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAbrirActionPerformed

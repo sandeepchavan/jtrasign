@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package jtraffic.lib;
+package jtraffic.algoritmo;
 
 /**
  *
@@ -14,13 +14,16 @@ package jtraffic.lib;
 public class Posicion {
     public int x;
     public int y;
+    public double valor;
 
-    public Posicion(int x, int y){
+    public Posicion(int x, int y, double valor){
         this.x = x;
         this.y = y;
+        this.valor = valor;
     }
 
+    @Override
     public String toString(){
-        return "(" + x + "," + y + ")";
+        return "(" + x + "," + y + ", valor: " + valor + ")";
     }
 }
