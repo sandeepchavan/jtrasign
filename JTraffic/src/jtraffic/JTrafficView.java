@@ -225,6 +225,7 @@ public class JTrafficView extends FrameView {
         miAbrir = new javax.swing.JMenuItem();
         javax.swing.JMenuItem exitMenuItem = new javax.swing.JMenuItem();
         exMenu = new javax.swing.JMenu();
+        miConfigurar = new javax.swing.JMenuItem();
         miPasoAnterior = new javax.swing.JMenuItem();
         miPasoSiguiente = new javax.swing.JMenuItem();
         miLanzar = new javax.swing.JMenuItem();
@@ -1111,6 +1112,15 @@ public class JTrafficView extends FrameView {
             }
         });
 
+        miConfigurar.setText(resourceMap.getString("miConfigurar.text")); // NOI18N
+        miConfigurar.setName("miConfigurar"); // NOI18N
+        miConfigurar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miConfigurarActionPerformed(evt);
+            }
+        });
+        exMenu.add(miConfigurar);
+
         miPasoAnterior.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, 0));
         miPasoAnterior.setText(resourceMap.getString("miPasoAnterior.text")); // NOI18N
         miPasoAnterior.setEnabled(false);
@@ -1406,6 +1416,11 @@ public class JTrafficView extends FrameView {
         actualizarBotonesEjecucion();
     }//GEN-LAST:event_jTabbedPane1StateChanged
 
+    private void miConfigurarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miConfigurarActionPerformed
+        AlgConfigDialog dialog = new AlgConfigDialog(this.getFrame(), true, configAlg);
+        dialog.show();
+    }//GEN-LAST:event_miConfigurarActionPerformed
+
     private void pasoSiguiente(){
         if(!algTerminado)
             lanzar();
@@ -1543,6 +1558,7 @@ public class JTrafficView extends FrameView {
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem miAbrir;
+    private javax.swing.JMenuItem miConfigurar;
     private javax.swing.JMenuItem miLanzar;
     private javax.swing.JMenuItem miPasoAnterior;
     private javax.swing.JMenuItem miPasoSiguiente;
