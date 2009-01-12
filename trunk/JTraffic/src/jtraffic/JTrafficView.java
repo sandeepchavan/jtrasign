@@ -1259,15 +1259,15 @@ public class JTrafficView extends FrameView {
     private void paso1(){
         algoritmo.paso1();
         asignaImagenALabel(lbR, algoritmo.getImagen(Algoritmo.NORM_R));
-        asignaImagenALabel(lbG, algoritmo.getImagen(Algoritmo.NORM_R));
-        asignaImagenALabel(lbB, algoritmo.getImagen(Algoritmo.NORM_R));
-        asignaImagenALabel(lbY, algoritmo.getImagen(Algoritmo.NORM_R));
+        asignaImagenALabel(lbG, algoritmo.getImagen(Algoritmo.NORM_G));
+        asignaImagenALabel(lbB, algoritmo.getImagen(Algoritmo.NORM_B));
+        asignaImagenALabel(lbY, algoritmo.getImagen(Algoritmo.NORM_Y));
     }
 
     private void paso2(){
         algoritmo.paso2();
-        asignaImagenALabel(lbRG_BY, algoritmo.getImagen(Algoritmo.NORM_R));
-        asignaImagenALabel(lbE, algoritmo.getImagen(Algoritmo.NORM_R));
+        asignaImagenALabel(lbRG_BY, algoritmo.getImagen(Algoritmo.NORM_BY));
+        asignaImagenALabel(lbE, algoritmo.getImagen(Algoritmo.NORM_EDGE));
     }
 
     private void paso3(){
