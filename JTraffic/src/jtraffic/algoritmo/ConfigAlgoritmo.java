@@ -18,7 +18,7 @@ public class ConfigAlgoritmo {
     public int height = 480;
     public int dimFixedWindow = 15;
     public int factorReduccionBusq = 2;
-    public double umbralBusq = 6;
+    public double umbralBusq = 10;
     public float pesoBorde = 0.5f;
     public float pesoColor = 0.5f;
 }
