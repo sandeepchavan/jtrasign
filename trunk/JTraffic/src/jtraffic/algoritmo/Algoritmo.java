@@ -87,7 +87,9 @@ public class Algoritmo {
     public void paso0(){
         //Redimensionamos la imagen original.        
         imagenes.put(ORIGINAL_REDIMENSIONADA,
-                OperacionesImagenes.redimensionar(imagenes.get(ORIGINAL), configuracion.width, configuracion.width));
+                OperacionesImagenes.redimensionar(imagenes.get(ORIGINAL)
+                        , configuracion.dimensionesAlg.width
+                        , configuracion.dimensionesAlg.height));
     }
 
     public void paso1(){
@@ -110,9 +112,9 @@ public class Algoritmo {
         piramideRG = PiramidesGaussianas.aplicar(imagenes.get(NORM_RG),configuracion.niveles_piramide);
     }
     public void paso4(){
-        csdBorde = CSD.aplicar(piramideEdge, configuracion.width, configuracion.width);
-        csdRG = CSD.aplicar(piramideRG, configuracion.width, configuracion.width);
-        csdBY = CSD.aplicar(piramideBY, configuracion.width, configuracion.width);
+        csdBorde = CSD.aplicar(piramideEdge, configuracion.dimensionesAlg.width, configuracion.dimensionesAlg.height);
+        csdRG = CSD.aplicar(piramideRG, configuracion.dimensionesAlg.width, configuracion.dimensionesAlg.height);
+        csdBY = CSD.aplicar(piramideBY, configuracion.dimensionesAlg.width, configuracion.dimensionesAlg.height);
     }
     public void paso5(){
          List<BufferedImage> imagenesSaliencyMap =

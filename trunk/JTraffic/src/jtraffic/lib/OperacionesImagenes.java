@@ -50,7 +50,8 @@ public class OperacionesImagenes {
         if(imagenes == null || imagenes.size() == 0)
             return null;
 
-        BufferedImage res = new BufferedImage(640, 480, BufferedImage.TYPE_BYTE_GRAY);
+
+        BufferedImage res = new BufferedImage(imagenes.get(0).getWidth(), imagenes.get(0).getHeight(), BufferedImage.TYPE_BYTE_GRAY);
         WritableRaster wres = res.getRaster();
 
         int maxY = wres.getHeight();

@@ -5,6 +5,9 @@
 
 package jtraffic.algoritmo;
 
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  * Objeto de configuración del algoritmo.
  *
@@ -13,9 +16,16 @@ package jtraffic.algoritmo;
  * @date 2009-01-11
  */
 public class ConfigAlgoritmo {
+    public static List<Dimensiones> dimensionesPermitidas(){
+        List<Dimensiones> dims = new LinkedList<Dimensiones>();
+        dims.add(new Dimensiones(640, 480));
+        dims.add(new Dimensiones(320, 240));
+        dims.add(new Dimensiones(160, 120));
+        return dims;
+    }
+
     public int niveles_piramide = 7;
-    public int width = 640;
-    public int height = 480;
+    public Dimensiones dimensionesAlg = new Dimensiones(640, 480);
     public int dimFixedWindow = 15;
     public int factorReduccionBusq = 2;
     public double umbralBusq = 10;
