@@ -37,7 +37,7 @@ public class PiramidesGaussianas {
                     aux.getType());
             Graphics2D g = aux2.createGraphics();
             
-            g.drawImage(aux, 0, 0, aux2.getWidth() + 2, aux2.getHeight()+ 2, null);
+            g.drawImage(aux, 0, 0, aux2.getWidth(), aux2.getHeight(), null);
             g.dispose();
 
             aux2 = FiltroGaussiano.aplicar(aux2, 1, 3);

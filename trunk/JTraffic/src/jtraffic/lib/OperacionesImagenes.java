@@ -172,7 +172,7 @@ public class OperacionesImagenes {
         BufferedImage redimensionada = new BufferedImage(width, height, imagen.getType());
         Graphics2D g = redimensionada.createGraphics();
 
-        g.drawImage(imagen, 0, 0, redimensionada.getWidth() + 2, redimensionada.getHeight()+ 2, null);
+        g.drawImage(imagen, 0, 0, redimensionada.getWidth(), redimensionada.getHeight(), null);
         g.dispose();
 
         return redimensionada;

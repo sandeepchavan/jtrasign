@@ -1364,7 +1364,7 @@ public class JTrafficView extends FrameView {
         resultado = new BufferedImage(640, 480, BufferedImage.TYPE_INT_RGB);
 
         Graphics2D g = resultado.createGraphics();
-        g.drawImage(algoritmo.getImagen(Algoritmo.SALIENCY_MAP), 0, 0, resultado.getWidth(), resultado.getHeight(), null);
+        g.drawImage(algoritmo.getImagen(Algoritmo.ORIGINAL_REDIMENSIONADA), 0, 0, resultado.getWidth(), resultado.getHeight(), null);
         it = candidatos.iterator();
         while(it.hasNext()){
             Posicion pos = it.next();

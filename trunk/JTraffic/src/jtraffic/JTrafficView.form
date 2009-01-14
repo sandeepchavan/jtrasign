@@ -22,7 +22,7 @@
               <Group type="102" alignment="1" attributes="0">
                   <Component id="tbBarraHerr" min="-2" pref="49" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jTabbedPane1" pref="625" max="32767" attributes="0"/>
+                  <Component id="jTabbedPane1" pref="630" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -1488,7 +1488,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="statusMessageLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="672" max="32767" attributes="0"/>
+                  <EmptySpace pref="668" max="32767" attributes="0"/>
                   <Component id="progressBar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="statusAnimationLabel" min="-2" max="-2" attributes="0"/>
