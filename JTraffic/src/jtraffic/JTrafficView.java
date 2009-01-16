@@ -4,8 +4,10 @@
 
 package jtraffic;
 
+import java.awt.Component;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.PopupMenu;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,10 +30,13 @@ import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
 import jtraffic.algoritmo.Algoritmo;
 import jtraffic.algoritmo.ConfigAlgoritmo;
-import jtraffic.gui.events.MouseListenerImagenesLabel;
 import jtraffic.algoritmo.Posicion;
+import jtraffic.gui.events.JLabelActionListenerAmpliar;
+import jtraffic.gui.events.JLabelActionListenerGuardar;
 import org.jdesktop.application.Task;
 
 /**
@@ -1213,26 +1218,34 @@ public class JTrafficView extends FrameView {
 
     private void abrir(){
         JFileChooser abrirFichero = new JFileChooser();
-        abrirFichero.showOpenDialog(this.getComponent());
-        File fichero = abrirFichero.getSelectedFile();
+        abrirFichero.setDialogType(JFileChooser.OPEN_DIALOG);
+        if(abrirFichero.showOpenDialog(this.getComponent()) == JFileChooser.APPROVE_OPTION){
+            File fichero = abrirFichero.getSelectedFile();
 
-        if(fichero != null){
-            try{
-                original = ImageIO.read(fichero);
+            if(fichero != null){
+                try{
+                    original = ImageIO.read(fichero);
 
-                algoritmo = new Algoritmo(original, configAlg);
+                    if(algoritmo!= null)
+                        System.gc();
+                    algTerminado = false;
+                    algoritmo = new Algoritmo(original, configAlg);
 
-                asignaImagenALabel(lbImagenOriginal, algoritmo.getImagen(Algoritmo.ORIGINAL));
+                    //Limpiamos los labels:
+                    limpiarLabels();
 
-                jTabbedPane1.setSelectedIndex(0);
-                miPasoAnterior.setEnabled(false);
-                miPasoSiguiente.setEnabled(true);
-                miLanzar.setEnabled(true);
-                bBack.setEnabled(false);
-                bNext.setEnabled(true);
-                bLanzar.setEnabled(true);
-            } catch (IOException ex) {
-                Logger.getLogger(JTrafficView.class.getName()).log(Level.SEVERE, null, ex);
+                    asignaImagenALabel(lbImagenOriginal, algoritmo.getImagen(Algoritmo.ORIGINAL));
+
+                    jTabbedPane1.setSelectedIndex(0);
+                    miPasoAnterior.setEnabled(false);
+                    miPasoSiguiente.setEnabled(true);
+                    miLanzar.setEnabled(true);
+                    bBack.setEnabled(false);
+                    bNext.setEnabled(true);
+                    bLanzar.setEnabled(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(JTrafficView.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }
     }
@@ -1246,6 +1259,10 @@ public class JTrafficView extends FrameView {
     }//GEN-LAST:event_miLanzarActionPerformed
 
     private void lanzar(){
+        if(algTerminado){
+            System.gc();
+            limpiarLabels();
+        }
         /*
         TaskMonitor taskMonitor = new TaskMonitor(getApplication().getContext());
         final Task t = new Task(this.getApplication()) {
@@ -1260,6 +1277,8 @@ public class JTrafficView extends FrameView {
         t.execute();
          */
         mi_lanzar();
+
+        algTerminado = true;
     }
 
     private void paso0(){
@@ -1370,6 +1389,11 @@ public class JTrafficView extends FrameView {
             Posicion pos = it.next();
             System.out.println("Posicion: " + pos);
             g.drawOval(pos.x, pos.y, 5, 5);
+            /*
+            g.setColor(Color.orange);
+            g.drawLine(pos.x+3, pos.y+3, pos.x-3, pos.y-3);
+            g.drawLine(pos.x-3, pos.y+3, pos.x+3, pos.y-3);
+             */
         }
 
         asignaImagenALabel(lbResultado, resultado);
@@ -1465,7 +1489,72 @@ public class JTrafficView extends FrameView {
     private void asignaImagenALabel(JLabel label, BufferedImage imagen){
         Image aux = imagen.getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_DEFAULT);
         label.setIcon(new ImageIcon(aux));
-        label.addMouseListener(new MouseListenerImagenesLabel(this.getFrame(), imagen, true));
+        JPopupMenu menu = new JPopupMenu();
+        JMenuItem ampliar = new JMenuItem("Ampliar");
+        ampliar.addActionListener(new JLabelActionListenerAmpliar(imagen, "", this.getFrame(), true));
+        JMenuItem guardar = new JMenuItem("Guardar");
+        guardar.addActionListener(new JLabelActionListenerGuardar(imagen, this.getFrame()));
+        menu.add(ampliar);
+        menu.add(guardar);
+
+        label.setComponentPopupMenu(menu);
+    }
+
+    private void limpiarLabels(){
+        liberarLabelDeImagen(lbB);
+        liberarLabelDeImagen(lbE);
+        liberarLabelDeImagen(lbG);
+        liberarLabelDeImagen(lbImagenOriginal);
+        liberarLabelDeImagen(lbPirBY0);
+        liberarLabelDeImagen(lbPirBY1);
+        liberarLabelDeImagen(lbPirBY2);
+        liberarLabelDeImagen(lbPirBY3);
+        liberarLabelDeImagen(lbPirBY4);
+        liberarLabelDeImagen(lbPirBY5);
+        liberarLabelDeImagen(lbPirBY6);
+        liberarLabelDeImagen(lbPirE0);
+        liberarLabelDeImagen(lbPirE1);
+        liberarLabelDeImagen(lbPirE2);
+        liberarLabelDeImagen(lbPirE3);
+        liberarLabelDeImagen(lbPirE4);
+        liberarLabelDeImagen(lbPirE5);
+        liberarLabelDeImagen(lbPirE6);
+        liberarLabelDeImagen(lbPirRG0);
+        liberarLabelDeImagen(lbPirRG1);
+        liberarLabelDeImagen(lbPirRG2);
+        liberarLabelDeImagen(lbPirRG3);
+        liberarLabelDeImagen(lbPirRG4);
+        liberarLabelDeImagen(lbPirRG5);
+        liberarLabelDeImagen(lbPirRG6);
+        liberarLabelDeImagen(lbR);
+        liberarLabelDeImagen(lbRG_BY);
+        liberarLabelDeImagen(lbResultado);
+        liberarLabelDeImagen(lbSaliency);
+        liberarLabelDeImagen(lbTextoImagenOriginal);
+        liberarLabelDeImagen(lbY);
+        liberarLabelDeImagen(lbcsdBY0);
+        liberarLabelDeImagen(lbcsdBY1);
+        liberarLabelDeImagen(lbcsdBY2);
+        liberarLabelDeImagen(lbcsdBY3);
+        liberarLabelDeImagen(lbcsdE0);
+        liberarLabelDeImagen(lbcsdE1);
+        liberarLabelDeImagen(lbcsdE2);
+        liberarLabelDeImagen(lbcsdE3);
+        liberarLabelDeImagen(lbcsdRG0);
+        liberarLabelDeImagen(lbcsdRG1);
+        liberarLabelDeImagen(lbcsdRG2);
+        liberarLabelDeImagen(lbcsdRG3);
+        liberarLabelDeImagen(lbfmColor);
+        liberarLabelDeImagen(lbfmEdge);
+    }
+
+    private void liberarLabelDeImagen(JLabel label){
+        if(label.getIcon() != null)
+            label.setIcon(null);
+        if(label.getComponentPopupMenu() != null){
+            label.remove(label.getComponentPopupMenu());
+            label.setComponentPopupMenu(null);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
