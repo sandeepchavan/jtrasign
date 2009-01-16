@@ -8,7 +8,14 @@ package jtraffic;
 
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -17,10 +24,10 @@ import javax.swing.ImageIcon;
  */
 public class ImageDialog extends javax.swing.JDialog {
     
-    private Image imagen;
+    private BufferedImage imagen;
 
     /** Creates new form ImageDialog */
-    public ImageDialog(Image imagen, java.awt.Frame parent, boolean modal) {
+    public ImageDialog(BufferedImage imagen, java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         this.imagen = imagen;
         
@@ -69,14 +76,16 @@ private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRS
     this.asignar_imagen();
 }//GEN-LAST:event_formComponentResized
 
+
+
     public void show(){
         asignar_imagen();
         super.show();
     }
     
     private void asignar_imagen(){
-        int width = this.getWidth() - 20;
-        int height = this.getHeight() - 20;
+        int width = jLabel1.getWidth() - 10;
+        int height = jLabel1.getHeight() - 10;
         
         this.jLabel1.setIcon(
                 new ImageIcon(
@@ -84,10 +93,6 @@ private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRS
                         width, 
                         height, 
                         Image.SCALE_DEFAULT)));
-        /*
-        this.setTitle(this.getTitle()
-                + " Dimensiones: " + width + "x" + height);
-         */
     }
 
     public void setTitle(String texto){
