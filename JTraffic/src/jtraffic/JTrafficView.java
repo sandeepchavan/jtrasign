@@ -47,6 +47,7 @@ public class JTrafficView extends FrameView {
     private BufferedImage resultado;
     private Algoritmo algoritmo;
     private ConfigAlgoritmo configAlg = new ConfigAlgoritmo();
+    BufferedImage punto;
 
     private boolean algTerminado = false;
 
@@ -108,6 +109,16 @@ public class JTrafficView extends FrameView {
                 }
             }
         });
+
+
+        try {
+            String direccion = System.getProperty("user.dir") + "\\src\\" + resourceMap.getResourcesDir() + "punto.png";
+            direccion = direccion.replaceAll("/", "\\\\");
+            System.out.println(direccion);
+            punto = ImageIO.read(new File(direccion));
+        } catch (Exception e) {
+            System.out.println("Fallo al traerse la imagen punto");
+        }
     }
 
     @Action
@@ -1417,7 +1428,7 @@ public class JTrafficView extends FrameView {
 
                     //Limpiamos los labels:
                     limpiarLabels();
-
+                    
                     asignaImagenALabel(lbImagenOriginal, algoritmo.getImagen(Algoritmo.ORIGINAL));
 
                     jTabbedPane1.setSelectedIndex(0);
@@ -1446,6 +1457,7 @@ public class JTrafficView extends FrameView {
         if(algTerminado){
             System.gc();
             limpiarLabels();
+            asignaImagenALabel(lbImagenOriginal, original);
         }
         /*
         TaskMonitor taskMonitor = new TaskMonitor(getApplication().getContext());
@@ -1569,15 +1581,16 @@ public class JTrafficView extends FrameView {
         Graphics2D g = resultado.createGraphics();
         g.drawImage(algoritmo.getImagen(Algoritmo.ORIGINAL_REDIMENSIONADA), 0, 0, resultado.getWidth(), resultado.getHeight(), null);
         it = candidatos.iterator();
+
         while(it.hasNext()){
             Posicion pos = it.next();
             System.out.println("Posicion: " + pos);
-            g.drawOval(pos.x, pos.y, 5, 5);
-            /*
-            g.setColor(Color.orange);
-            g.drawLine(pos.x+3, pos.y+3, pos.x-3, pos.y-3);
-            g.drawLine(pos.x-3, pos.y+3, pos.x+3, pos.y-3);
-             */
+
+            if(punto != null)
+                g.drawImage((Image)punto, pos.x, pos.y, 10, 10, null);
+            else
+                g.drawOval(pos.x, pos.y, 10, 10);
+
         }
 
         asignaImagenALabel(lbResultado, resultado);
