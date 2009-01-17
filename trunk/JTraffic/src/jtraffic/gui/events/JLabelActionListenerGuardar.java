@@ -45,6 +45,7 @@ public class JLabelActionListenerGuardar implements ActionListener{
             File file = fChooser.getSelectedFile();
             if(file != null){
                 try {
+
                     ImageIO.write(imagen, "png", file);
                 } catch (IOException ex) {
                     ErrorDialog dialog = new ErrorDialog(contenedor, "Fallo al crear la imagen: " + ex.getMessage());
