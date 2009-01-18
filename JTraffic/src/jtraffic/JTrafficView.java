@@ -4,11 +4,9 @@
 
 package jtraffic;
 
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.PopupMenu;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,12 +31,12 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import jtraffic.algoritmo.Algoritmo;
 import jtraffic.algoritmo.ConfigAlgoritmo;
 import jtraffic.algoritmo.Posicion;
 import jtraffic.gui.events.JLabelActionListenerAmpliar;
 import jtraffic.gui.events.JLabelActionListenerGuardar;
-import org.jdesktop.application.Task;
 
 /**
  * The application's main frame.
@@ -115,7 +113,7 @@ public class JTrafficView extends FrameView {
         try {
             String direccion = System.getProperty("user.dir") + "\\src\\" + resourceMap.getResourcesDir() + "punto.png";
             direccion = direccion.replaceAll("/", "\\\\");
-            System.out.println(direccion);
+            //System.out.println(direccion);
             punto = ImageIO.read(new File(direccion));
         } catch (Exception e) {
             System.out.println("Fallo al traerse la imagen punto");
@@ -1416,6 +1414,16 @@ public class JTrafficView extends FrameView {
     private void abrir(){
         JFileChooser abrirFichero = new JFileChooser();
         abrirFichero.setDialogType(JFileChooser.OPEN_DIALOG);
+        
+        //Carpeta de las imagenes
+        File carpeta = new File(System.getProperty("user.dir") + File.separatorChar + "samples");
+        if(carpeta != null)
+            abrirFichero.setCurrentDirectory(carpeta);
+
+        String[] extensiones = ImageIO.getReaderFileSuffixes();
+        for(int i = 0; i < extensiones.length; i++)
+            abrirFichero.setFileFilter(new FileNameExtensionFilter(extensiones[i], extensiones[i]));
+
         if(abrirFichero.showOpenDialog(this.getComponent()) == JFileChooser.APPROVE_OPTION){
             File fichero = abrirFichero.getSelectedFile();
 
