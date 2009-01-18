@@ -5,6 +5,7 @@
 package jtraffic;
 
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.PopupMenu;
@@ -119,6 +120,7 @@ public class JTrafficView extends FrameView {
         } catch (Exception e) {
             System.out.println("Fallo al traerse la imagen punto");
         }
+        this.getFrame().setMinimumSize(new Dimension(700, 500));
     }
 
     @Action

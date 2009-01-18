@@ -11,6 +11,8 @@
 
 package jtraffic;
 
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.Iterator;
 import jtraffic.algoritmo.ConfigAlgoritmo;
 import jtraffic.algoritmo.Dimensiones;
@@ -39,6 +41,16 @@ public class AlgConfigDialog extends javax.swing.JDialog {
         while(it.hasNext()){
             cbDimensiones.addItem(it.next());
         }
+        cbDimensiones.addItemListener(new ItemListener() {
+
+            public void itemStateChanged(ItemEvent e) {
+                cambiarCampos();
+            }
+        });
+
+        for(int i=0; i < 3; i++){
+            cbReduccionBusq.addItem(reducir(configuracion.dimensionesAlg, i));
+        }
 
         //Cargamos todos los valores en los campos del formulario
         cbDimensiones.setSelectedItem(configuracion.dimensionesAlg);
@@ -46,7 +58,7 @@ public class AlgConfigDialog extends javax.swing.JDialog {
         tfPesoColor.setText(Float.toString(configuracion.pesoColor));
         tfNoNivPiram.setText(Integer.toString(configuracion.niveles_piramide));
         tfDimVentBusq.setText(Integer.toString(configuracion.dimFixedWindow));
-        tfReduccBusq.setText(Integer.toString(configuracion.factorReduccionBusq));
+        cbReduccionBusq.setSelectedIndex(configuracion.factorReduccionBusq);
         tfUmbralBusq.setText(Double.toString(configuracion.umbralBusq));
     }
 
@@ -56,9 +68,39 @@ public class AlgConfigDialog extends javax.swing.JDialog {
         configuracion.pesoColor = Float.parseFloat(tfPesoColor.getText());
         //configuracion.niveles_piramide = Integer.parseInt(tfNoNivPiram.getText());//Por ahora está desactivado.
         configuracion.dimFixedWindow = Integer.parseInt(tfDimVentBusq.getText());
-        configuracion.factorReduccionBusq = Integer.parseInt(tfReduccBusq.getText());
+        configuracion.factorReduccionBusq = cbReduccionBusq.getSelectedIndex();
         configuracion.umbralBusq = Double.parseDouble(tfUmbralBusq.getText());
+        System.out.println(configuracion);
         this.dispose();
+    }
+
+    private int reduccion(Dimensiones d1, Dimensiones d2){
+        if(d1.width != d2.width){
+            int res = d1.width / d2.width;
+            res = (int)(Math.log10(res) / Math.log10(2));
+            return res;
+        }
+        else return 0;
+    }
+
+    private Dimensiones reducir(Dimensiones d1, int n){
+        if(n > 0){
+            float div = (float) Math.pow(2, n);
+            int w = (int)Math.ceil(d1.width / div);
+            int h = (int)Math.ceil(d1.height / div);
+            Dimensiones res = new Dimensiones(w, h);
+            return res;
+        }
+        else
+            return d1;
+    }
+
+    private void cambiarCampos(){
+        cbReduccionBusq.removeAllItems();
+        for(int i=0; i < 3; i++){
+            cbReduccionBusq.addItem(reducir((Dimensiones) cbDimensiones.getSelectedItem(), i));
+        }
+        cbReduccionBusq.setSelectedIndex(configuracion.factorReduccionBusq);
     }
 
     /** This method is called from within the constructor to
@@ -80,13 +122,13 @@ public class AlgConfigDialog extends javax.swing.JDialog {
         tfPesoBorde = new javax.swing.JTextField();
         tfPesoColor = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        tfReduccBusq = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         tfUmbralBusq = new javax.swing.JTextField();
         bAceptar = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         tfDimVentBusq = new javax.swing.JTextField();
         bCancelar = new javax.swing.JButton();
+        cbReduccionBusq = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setName("Form"); // NOI18N
@@ -126,10 +168,6 @@ public class AlgConfigDialog extends javax.swing.JDialog {
         jLabel6.setText(resourceMap.getString("jLabel6.text")); // NOI18N
         jLabel6.setName("jLabel6"); // NOI18N
 
-        tfReduccBusq.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        tfReduccBusq.setText(resourceMap.getString("tfReduccBusq.text")); // NOI18N
-        tfReduccBusq.setName("tfReduccBusq"); // NOI18N
-
         jLabel7.setText(resourceMap.getString("jLabel7.text")); // NOI18N
         jLabel7.setName("jLabel7"); // NOI18N
 
@@ -159,6 +197,8 @@ public class AlgConfigDialog extends javax.swing.JDialog {
             }
         });
 
+        cbReduccionBusq.setName("cbReduccionBusq"); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -166,37 +206,36 @@ public class AlgConfigDialog extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(jLabel7)
-                            .addGap(26, 26, 26)
-                            .addComponent(tfUmbralBusq))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(jLabel6)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(tfReduccBusq))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel2))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(cbDimensiones, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tfPesoBorde, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
-                                    .addComponent(tfNoNivPiram)
-                                    .addComponent(tfPesoColor, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(bAceptar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                        .addComponent(bCancelar))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tfDimVentBusq, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE))
+                        .addComponent(tfDimVentBusq, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(bAceptar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                        .addComponent(bCancelar)))
+                        .addComponent(jLabel7)
+                        .addGap(26, 26, 26)
+                        .addComponent(tfUmbralBusq, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cbReduccionBusq, 0, 77, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(cbDimensiones, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(tfPesoBorde, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
+                                .addComponent(tfNoNivPiram)
+                                .addComponent(tfPesoColor, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -223,7 +262,7 @@ public class AlgConfigDialog extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(tfReduccBusq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbReduccionBusq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -254,6 +293,7 @@ public class AlgConfigDialog extends javax.swing.JDialog {
     private javax.swing.JButton bAceptar;
     private javax.swing.JButton bCancelar;
     private javax.swing.JComboBox cbDimensiones;
+    private javax.swing.JComboBox cbReduccionBusq;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -266,7 +306,6 @@ public class AlgConfigDialog extends javax.swing.JDialog {
     private javax.swing.JTextField tfNoNivPiram;
     private javax.swing.JTextField tfPesoBorde;
     private javax.swing.JTextField tfPesoColor;
-    private javax.swing.JTextField tfReduccBusq;
     private javax.swing.JTextField tfUmbralBusq;
     // End of variables declaration//GEN-END:variables
 

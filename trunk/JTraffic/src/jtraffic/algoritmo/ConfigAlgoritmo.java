@@ -31,4 +31,16 @@ public class ConfigAlgoritmo {
     public double umbralBusq = 10;
     public float pesoBorde = 0.5f;
     public float pesoColor = 0.5f;
+
+    public String toString(){
+        String res = "ConfigAlgoritmo[niveles_piramide: " + niveles_piramide
+                + ", dimensionesAlg: " + dimensionesAlg
+                + ", dimFixedWindow: " + dimFixedWindow
+                + ", factorReduccionBusq: " + factorReduccionBusq
+                + ", umbralBusq: " + umbralBusq
+                + ", pesoBorde: " + pesoBorde
+                + ", pesoColor: " + pesoColor + "]";
+        return res;
+    }
 }
+
