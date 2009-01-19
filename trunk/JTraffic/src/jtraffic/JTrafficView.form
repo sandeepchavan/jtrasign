@@ -479,6 +479,7 @@
                         <Component class="javax.swing.JTextArea" name="jTextArea2">
                           <Properties>
                             <Property name="columns" type="int" value="20"/>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="lineWrap" type="boolean" value="true"/>
                             <Property name="rows" type="int" value="5"/>
                             <Property name="text" type="java.lang.String" resourceKey="jTextArea2.text"/>
@@ -901,6 +902,7 @@
                         <Component class="javax.swing.JTextArea" name="jTextArea3">
                           <Properties>
                             <Property name="columns" type="int" value="20"/>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="lineWrap" type="boolean" value="true"/>
                             <Property name="rows" type="int" value="5"/>
                             <Property name="text" type="java.lang.String" resourceKey="jTextArea3.text"/>
@@ -1243,6 +1245,7 @@
                         <Component class="javax.swing.JTextArea" name="jTextArea7">
                           <Properties>
                             <Property name="columns" type="int" value="20"/>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="lineWrap" type="boolean" value="true"/>
                             <Property name="rows" type="int" value="5"/>
                             <Property name="text" type="java.lang.String" resourceKey="jTextArea7.text"/>
@@ -1290,13 +1293,13 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel13" min="-2" pref="244" max="-2" attributes="1"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jLabel12" pref="252" max="32767" attributes="1"/>
+                                      <Component id="jLabel12" pref="257" max="32767" attributes="1"/>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="12" max="32767" attributes="0"/>
+                              <EmptySpace pref="17" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel20" min="-2" pref="258" max="-2" attributes="1"/>
-                                  <Component id="jScrollPane10" alignment="0" pref="265" max="32767" attributes="1"/>
+                                  <Component id="jScrollPane10" alignment="0" pref="270" max="32767" attributes="1"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -1380,6 +1383,7 @@
                         <Component class="javax.swing.JTextArea" name="jTextArea4">
                           <Properties>
                             <Property name="columns" type="int" value="20"/>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="lineWrap" type="boolean" value="true"/>
                             <Property name="rows" type="int" value="5"/>
                             <Property name="text" type="java.lang.String" resourceKey="jTextArea4.text"/>
@@ -1484,6 +1488,7 @@
                         <Component class="javax.swing.JTextArea" name="jTextArea5">
                           <Properties>
                             <Property name="columns" type="int" value="20"/>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="lineWrap" type="boolean" value="true"/>
                             <Property name="rows" type="int" value="5"/>
                             <Property name="text" type="java.lang.String" resourceKey="jTextArea5.text"/>
@@ -1588,6 +1593,7 @@
                         <Component class="javax.swing.JTextArea" name="jTextArea6">
                           <Properties>
                             <Property name="columns" type="int" value="20"/>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="lineWrap" type="boolean" value="true"/>
                             <Property name="rows" type="int" value="5"/>
                             <Property name="text" type="java.lang.String" resourceKey="jTextArea6.text"/>

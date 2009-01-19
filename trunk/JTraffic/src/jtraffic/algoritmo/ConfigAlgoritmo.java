@@ -32,6 +32,7 @@ public class ConfigAlgoritmo {
     public float pesoBorde = 0.5f;
     public float pesoColor = 0.5f;
 
+    @Override
     public String toString(){
         String res = "ConfigAlgoritmo[niveles_piramide: " + niveles_piramide
                 + ", dimensionesAlg: " + dimensionesAlg
