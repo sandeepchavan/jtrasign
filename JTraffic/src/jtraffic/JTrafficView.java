@@ -517,6 +517,7 @@ public class JTrafficView extends FrameView {
         jScrollPane8.setName("jScrollPane8"); // NOI18N
 
         jTextArea2.setColumns(20);
+        jTextArea2.setEditable(false);
         jTextArea2.setLineWrap(true);
         jTextArea2.setRows(5);
         jTextArea2.setText(resourceMap.getString("jTextArea2.text")); // NOI18N
@@ -780,6 +781,7 @@ public class JTrafficView extends FrameView {
         jScrollPane9.setName("jScrollPane9"); // NOI18N
 
         jTextArea3.setColumns(20);
+        jTextArea3.setEditable(false);
         jTextArea3.setLineWrap(true);
         jTextArea3.setRows(5);
         jTextArea3.setText(resourceMap.getString("jTextArea3.text")); // NOI18N
@@ -992,6 +994,7 @@ public class JTrafficView extends FrameView {
         jScrollPane13.setName("jScrollPane13"); // NOI18N
 
         jTextArea7.setColumns(20);
+        jTextArea7.setEditable(false);
         jTextArea7.setLineWrap(true);
         jTextArea7.setRows(5);
         jTextArea7.setText(resourceMap.getString("jTextArea7.text")); // NOI18N
@@ -1072,6 +1075,7 @@ public class JTrafficView extends FrameView {
         jScrollPane10.setName("jScrollPane10"); // NOI18N
 
         jTextArea4.setColumns(20);
+        jTextArea4.setEditable(false);
         jTextArea4.setLineWrap(true);
         jTextArea4.setRows(5);
         jTextArea4.setText(resourceMap.getString("jTextArea4.text")); // NOI18N
@@ -1093,11 +1097,11 @@ public class JTrafficView extends FrameView {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                        .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE))
+                    .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -1142,6 +1146,7 @@ public class JTrafficView extends FrameView {
         jScrollPane11.setName("jScrollPane11"); // NOI18N
 
         jTextArea5.setColumns(20);
+        jTextArea5.setEditable(false);
         jTextArea5.setLineWrap(true);
         jTextArea5.setRows(5);
         jTextArea5.setText(resourceMap.getString("jTextArea5.text")); // NOI18N
@@ -1202,6 +1207,7 @@ public class JTrafficView extends FrameView {
         jScrollPane12.setName("jScrollPane12"); // NOI18N
 
         jTextArea6.setColumns(20);
+        jTextArea6.setEditable(false);
         jTextArea6.setLineWrap(true);
         jTextArea6.setRows(5);
         jTextArea6.setText(resourceMap.getString("jTextArea6.text")); // NOI18N

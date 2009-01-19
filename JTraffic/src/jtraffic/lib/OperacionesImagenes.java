@@ -134,39 +134,6 @@ public class OperacionesImagenes {
 
         return res;
     }
-    /*
-    public static BufferedImage restaImagenesConDifNiveles(BufferedImage a, int nivelA, BufferedImage b, int nivelB){
-        BufferedImage res = new BufferedImage(WIDTH, HEIGHT, a.getType());
-        WritableRaster wr = res.getRaster();
-        System.out.println("nivel a:"+ nivelA + ", nivel b:" + nivelB);
-        Raster rA = a.getData();
-        Raster rB = b.getData();
-
-        int maxY = wr.getHeight();
-        int maxX = wr.getWidth();
-
-        for(int x = res.getMinX(); x < maxX; x++){
-            for(int y = res.getMinY(); y < maxY; y++){
-                int xA = (int) Math.floor(x / Math.pow(2.0, nivelA));
-                int yA = (int) Math.floor(y / Math.pow(2.0, nivelA));
-
-                int xB = (int) Math.floor(x / Math.pow(2.0, nivelB));
-                int yB = (int) Math.floor(y / Math.pow(2.0, nivelB));
-
-                int pixelA[] = null;
-                pixelA = rA.getPixel(xA , yA, pixelA);
-
-                int pixelB[] = null;
-                pixelB = rB.getPixel(xB , yB, pixelB);
-
-                int dif = Math.abs(pixelA[0] - pixelB[0]);
-
-                wr.setPixel(x, y, new int[]{dif});
-            }
-        }
-
-        return res;
-    }*/
 
     public static BufferedImage redimensionar(BufferedImage imagen, int width, int height){
         BufferedImage redimensionada = new BufferedImage(width, height, imagen.getType());
@@ -181,8 +148,6 @@ public class OperacionesImagenes {
     public static BufferedImage restaImagenesConDifNiveles(BufferedImage c, int nC, BufferedImage s, int nS, int width, int heigth){
         BufferedImage res = new BufferedImage(width, heigth, c.getType());
         WritableRaster wr = res.getRaster();
-
-        //System.out.println("Nivel c: " + nC + ", nivel s: " + nS);
 
         Raster rc = c.getData();
         Raster rs = s.getData();
